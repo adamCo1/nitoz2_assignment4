@@ -2,6 +2,7 @@ package View;
 
 import Event.*;
 import java.util.List;
+import java.util.Observer;
 
 public interface IView {
 
