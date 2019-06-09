@@ -2,10 +2,12 @@ package Controller;
 
 import Event.*;
 import Objects.ErrorBox;
+import Objects.StageHolder;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class CreateEventController {
 
@@ -19,6 +21,8 @@ public class CreateEventController {
 
 
     public void cancel_btn(){
+        Stage currentStage = StageHolder.getInstance().getCurrentStageClone() ;
+        currentStage.close();
 
     }
 

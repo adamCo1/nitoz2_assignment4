@@ -27,7 +27,7 @@ public class Model extends Observable implements IModel , ObserveableObject {
     }
 
     @Override
-    public void pushJoinRequestToEvent(JoinRequestContainer joinRequest) {
+    public void pushJoinRequestToEvent(JoinRequestToEvent joinRequest) {
 
     }
 

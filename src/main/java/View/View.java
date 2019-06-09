@@ -1,8 +1,6 @@
 package View;
 
 import Event.*;
-import Event.EventDetailsContainer;
-import Event.JoinRequestContainer;
 import Interfaces.ObserveableObject;
 import Objects.StageHolder;
 import javafx.collections.FXCollections;
@@ -13,8 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -31,7 +27,7 @@ public class View extends Observable implements IView , ObserveableObject {
     }
 
     @Override
-    public EventDetailsContainer getEventUpdateFromUser() {
+    public void getEventUpdateFromUser() {
 
         FXMLLoader loader = new FXMLLoader();
         try{
@@ -56,7 +52,6 @@ public class View extends Observable implements IView , ObserveableObject {
             e.printStackTrace();
         }
 
-        return null;
     }
 
     /**
@@ -64,7 +59,7 @@ public class View extends Observable implements IView , ObserveableObject {
      * @return EventDetailsContainer object which holds the details of the event
      */
     @Override
-    public EventDetailsContainer getEventDetailsFromUser(String[] categories) {
+    public void getEventDetailsFromUser(String[] categories) {
 
         FXMLLoader loader = new FXMLLoader();
         try{
@@ -93,11 +88,14 @@ public class View extends Observable implements IView , ObserveableObject {
         /**
          * show the create new event window . change controller when all loaded successfully
          */
-        return null;
+
     }
 
+    /**
+     * show the user the join forces window
+     */
     @Override
-    public JoinRequestContainer getUserJoinRequest() {
+    public void getUserJoinRequest() {
 
         FXMLLoader loader = new FXMLLoader();
         try{
@@ -125,8 +123,6 @@ public class View extends Observable implements IView , ObserveableObject {
         /**
          * show the join forces window . change controller when all loaded successfully
          */
-
-        return null;
     }
 
     @Override

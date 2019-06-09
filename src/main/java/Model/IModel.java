@@ -8,6 +8,6 @@ public interface IModel {
 
     String[] getAllPossibleCategories();
     void addEventToSystem(Event event) ;
-    void pushJoinRequestToEvent(JoinRequestContainer joinRequest);
+    void pushJoinRequestToEvent(JoinRequestToEvent joinRequest);
 
 }
