@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Event/JoinRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/DriverConnection.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="controller classes + empty FXMLS for each one">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Objects/ErrorBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Objects/StageHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Event/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CreateEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Event/EventUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Event/EventUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/IModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/IView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CreateEventFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CreateEventFXML.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/JoinForcesFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JoinForcesFXML.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MainWindowFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainWindowFXML.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateEventFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateEventFXML.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,48 +78,17 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="374" column="1" selection-start-line="374" selection-start-column="1" selection-end-line="374" selection-end-column="1" />
+            <state relative-caret-position="330">
+              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#311#312#0" expanded="true" />
-                <element signature="e#363#364#0" expanded="true" />
+                <element signature="e#757#758#0" expanded="true" />
+                <element signature="e#787#788#0" expanded="true" />
+                <element signature="e#847#848#0" expanded="true" />
+                <element signature="e#880#881#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/EventUpdate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-              <folding>
-                <element signature="e#404#405#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/EventDetailsContainer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -119,8 +96,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="335">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+                <element signature="e#915#916#0" expanded="true" />
+                <element signature="e#938#939#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/JoinForcesToEventController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/CreateEventController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,43 +131,53 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/JoinRequestContainer.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/UpdateEventFXML.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+            <state relative-caret-position="198">
+              <caret line="9" column="176" selection-start-line="9" selection-start-column="176" selection-end-line="9" selection-end-column="176" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
               <folding>
-                <element signature="e#321#322#0" expanded="true" />
-                <element signature="e#364#365#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1456#1457#0" expanded="true" />
+                <element signature="e#1533#1534#0" expanded="true" />
+                <element signature="method#getEventDetailsFromUser#0;class#View#0" />
+                <element signature="e#2639#2640#0" expanded="true" />
+                <element signature="e#2716#2717#0" expanded="true" />
+                <element signature="method#getUserJoinRequest#0;class#View#0" />
+                <element signature="e#3660#3661#0" expanded="true" />
+                <element signature="e#3737#3738#0" expanded="true" />
+                <element signature="e#4316#4317#0" expanded="true" />
+                <element signature="e#4409#4410#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Event.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/JoinForcesFXML.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
-              <folding>
-                <element signature="e#654#655#0" expanded="true" />
-                <element signature="e#686#687#0" expanded="true" />
-                <element signature="e#1064#1065#0" expanded="true" />
-                <element signature="e#1097#1098#0" expanded="true" />
-                <element signature="e#1157#1158#0" expanded="true" />
-                <element signature="e#1190#1191#0" expanded="true" />
-                <element signature="e#1229#1230#0" expanded="true" />
-                <element signature="e#1264#1265#0" expanded="true" />
-                <element signature="e#1299#1300#0" expanded="true" />
-                <element signature="e#1330#1331#0" expanded="true" />
-                <element signature="e#1365#1366#0" expanded="true" />
-                <element signature="e#1396#1397#0" expanded="true" />
-                <element signature="e#1429#1430#0" expanded="true" />
-                <element signature="e#1458#1459#0" expanded="true" />
-                <element signature="e#1489#1490#0" expanded="true" />
-                <element signature="e#1516#1517#0" expanded="true" />
-                <element signature="e#1722#1723#0" expanded="true" />
-                <element signature="e#1758#1759#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/CreateEventFXML.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -173,8 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/IModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            <state relative-caret-position="176">
+              <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -183,36 +195,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/DriverConnection.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/IView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state relative-caret-position="264">
+              <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/JoinRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-              <folding>
-                <element signature="e#581#582#0" expanded="true" />
-                <element signature="e#402#403#0" expanded="true" />
-                <element signature="e#431#432#0" expanded="true" />
-                <element signature="e#465#466#0" expanded="true" />
-                <element signature="e#495#496#0" expanded="true" />
-                <element signature="e#532#533#0" expanded="true" />
-                <element signature="e#560#561#0" expanded="true" />
-                <element signature="e#595#596#0" expanded="true" />
-                <element signature="e#626#627#0" expanded="true" />
-                <element signature="e#725#726#0" expanded="true" />
-                <element signature="e#754#755#0" expanded="true" />
-                <element signature="e#736#737#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -224,17 +212,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>update</find>
-      <find>drivermanager</find>
-      <find>notification</find>
-      <find>notifications</find>
-    </findStrings>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -242,6 +223,11 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="adam &lt;adam388cohen@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -259,15 +245,26 @@
         <option value="$PROJECT_DIR$/src/Model/Model.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Event/JoinRequestContainer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/IView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/View.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/Controller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/DriverConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/EventUpdate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Interfaces/ObserveableObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Interfaces/ControllerStateInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/JoinForcesToEventController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/UpdateEventController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/MainscreenController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/CreateEventFXML.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Event.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/JoinRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/EventUpdate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Objects/ErrorBox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Objects/StageHolder.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/MainWindowFXML.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/IModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/IView.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Model.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/CreateEventController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/JoinForcesFXML.fxml" />
+        <option value="$PROJECT_DIR$/src/main/resources/UpdateEventFXML.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/View.java" />
       </list>
     </option>
   </component>
@@ -280,10 +277,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-6" />
-    <option name="y" value="474" />
-    <option name="width" value="1890" />
-    <option name="height" value="960" />
+    <option name="x" value="640" />
+    <option name="y" value="31" />
+    <option name="width" value="1237" />
+    <option name="height" value="975" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -298,66 +295,81 @@
         <subPane>
           <expand>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Event" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Objects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="nitoz2_assignment4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nitoz2_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nitoz_assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nitoz_assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -378,11 +390,21 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560105373464" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/vacation_for_u" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Objects" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adam\Desktop\nitoz_assignment4\src\main\resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -481,16 +503,31 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="first commit - basic structure">
+      <created>1560036476168</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1560036476169</updated>
+    </task>
+    <task id="LOCAL-00002" summary="controller classes + empty FXMLS for each one">
+      <created>1560077756646</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560077756646</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="33" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16032389" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.23592493" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -499,8 +536,8 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32956153" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33380482" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43451464" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -510,7 +547,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32956153" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="14" />
       <window_info anchor="bottom" id="Terminal" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -529,20 +566,15 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="first commit - basic structure" />
+    <MESSAGE value="controller classes + empty FXMLS for each one" />
+    <option name="LAST_COMMIT_MESSAGE" value="controller classes + empty FXMLS for each one" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Event/EventDetails.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -551,146 +583,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Users/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/IView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#264#265#0" expanded="true" />
-            <element signature="e#291#292#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/EventDetailsContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Event/JoinRequestContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+        <state relative-caret-position="330">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
           <folding>
-            <element signature="e#321#322#0" expanded="true" />
             <element signature="e#364#365#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DriverConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Users/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        <state relative-caret-position="44">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/EventDetailsContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Interfaces/ObserveableObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Interfaces/ControllerStateInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/UpdateEventController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="10" column="60" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Event/EventUpdate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+        <state relative-caret-position="374">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
           <folding>
-            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Event.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Objects/ErrorBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
+        <state relative-caret-position="195">
+          <caret line="23" column="39" lean-forward="true" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#686#687#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="e#1097#1098#0" expanded="true" />
-            <element signature="e#1157#1158#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
-            <element signature="e#1229#1230#0" expanded="true" />
-            <element signature="e#1264#1265#0" expanded="true" />
-            <element signature="e#1299#1300#0" expanded="true" />
-            <element signature="e#1330#1331#0" expanded="true" />
-            <element signature="e#1365#1366#0" expanded="true" />
-            <element signature="e#1396#1397#0" expanded="true" />
-            <element signature="e#1429#1430#0" expanded="true" />
-            <element signature="e#1458#1459#0" expanded="true" />
-            <element signature="e#1489#1490#0" expanded="true" />
-            <element signature="e#1516#1517#0" expanded="true" />
-            <element signature="e#1722#1723#0" expanded="true" />
-            <element signature="e#1758#1759#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1056#1057#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1479#1480#0" expanded="true" />
+            <element signature="e#1555#1556#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/JoinRequest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Objects/StageHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        <state relative-caret-position="415">
+          <caret line="44" column="11" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/MainWindowFXML.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
           <folding>
-            <element signature="e#581#582#0" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#431#432#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#495#496#0" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#626#627#0" expanded="true" />
-            <element signature="e#725#726#0" expanded="true" />
-            <element signature="e#754#755#0" expanded="true" />
-            <element signature="e#736#737#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#833#834#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/MainscreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/JoinForcesToEventController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/IModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        <state relative-caret-position="176">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/IView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -699,15 +727,158 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="374" column="1" selection-start-line="374" selection-start-column="1" selection-end-line="374" selection-end-column="1" />
+        <state relative-caret-position="330">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
+            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#847#848#0" expanded="true" />
+            <element signature="e#880#881#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/CreateEventController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/CreateEventFXML.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/JoinForcesFXML.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/UpdateEventFXML.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="176" selection-start-line="9" selection-start-column="176" selection-end-line="9" selection-end-column="176" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#915#916#0" expanded="true" />
+            <element signature="e#938#939#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1456#1457#0" expanded="true" />
+            <element signature="e#1533#1534#0" expanded="true" />
+            <element signature="method#getEventDetailsFromUser#0;class#View#0" />
+            <element signature="e#2639#2640#0" expanded="true" />
+            <element signature="e#2716#2717#0" expanded="true" />
+            <element signature="method#getUserJoinRequest#0;class#View#0" />
+            <element signature="e#3660#3661#0" expanded="true" />
+            <element signature="e#3737#3738#0" expanded="true" />
+            <element signature="e#4316#4317#0" expanded="true" />
+            <element signature="e#4409#4410#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>nitoz_assignment4</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

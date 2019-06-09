@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
+   <children>
+      <Button fx:id="createEvent_btn" layoutX="179.0" layoutY="74.0" mnemonicParsing="false" onAction="#createNewEvent" prefHeight="31.0" prefWidth="217.0" text="Create Event" />
+      <Button  onAction="#updateEvent" fx:id="updateEvent_btn" layoutX="179.0" layoutY="169.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="Update Event" />
+      <Button onAction="#joinForceToEvent" fx:id="joinForces_btn" layoutX="179.0" layoutY="264.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="Join Forces To Event" />
+   </children>
+</AnchorPane>
