@@ -13,7 +13,7 @@ public class Model extends Observable implements IModel , ObserveableObject {
      * @return list of all categories from db
      */
     @Override
-    public List<String> getAllPossibleCategories() {
+    public String[] getAllPossibleCategories() {
         return null;
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IModel {
 
-    List<String> getAllPossibleCategories();
+    String[] getAllPossibleCategories();
     void addEventToSystem(Event event) ;
     void pushJoinRequestToEvent(JoinRequestContainer joinRequest);
 

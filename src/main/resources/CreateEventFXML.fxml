@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CreateEventFXML"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CreateEventController">
+   <children>
+      <Label layoutX="67.0" layoutY="39.0" prefHeight="21.0" prefWidth="121.0" text="Event Title" />
+      <Label layoutX="67.0" layoutY="90.0" prefHeight="21.0" prefWidth="121.0" text="Event Update" />
+      <TextField fx:id="eventTitle" layoutX="234.0" layoutY="34.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextArea fx:id="eventUpdate" layoutX="234.0" layoutY="83.0" prefHeight="158.0" prefWidth="200.0" />
+      <Label layoutX="67.0" layoutY="263.0" prefHeight="21.0" prefWidth="121.0" text="Event Category" />
+      <ChoiceBox fx:id="category" layoutX="234.0" layoutY="258.0" prefHeight="31.0" prefWidth="200.0" />
+      <Button onAction="#submit_btn" fx:id="submitEvent_btn" layoutX="120.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="136.0" text="Submit" />
+      <Button onAction="#cancel_btn" fx:id="cancelEvent_btn" layoutX="366.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="136.0" text="Cancel" />
+   </children>
 </AnchorPane>
