@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 public class CreateEventController {
 
+    private Controller controller ;
 
     @FXML
     private TextArea eventUpdate ;
@@ -39,12 +40,14 @@ public class CreateEventController {
             box.showErrorStage("Invalid input");
         }
 
-        Event newEvent = new Event(new EventUpdate(update,category) , title) ;
+        Event event = new Event(title ,"a" ,"a" ,"a" ,"a" ,update ,"a" ,true);
 
-        /**
-         * save in the db and things
-         */
+        controller.addEventToDB(event);
 
+    }
+
+    public void setController(Controller controller){
+        this.controller = controller ;
     }
 
 }

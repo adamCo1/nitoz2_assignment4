@@ -110,8 +110,6 @@ public class Model implements IModel {
         }
     }
 
-
-public class Model extends Observable implements IModel , ObserveableObject {
     /**
      *
      * update table
@@ -416,17 +414,6 @@ public class Model extends Observable implements IModel , ObserveableObject {
     public void acceptJoinRequest(JoinRequest joinRequest, String accepterUsername) {
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

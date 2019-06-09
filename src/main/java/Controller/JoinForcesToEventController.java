@@ -5,6 +5,8 @@ import javafx.stage.Stage;
 
 public class JoinForcesToEventController {
 
+    private Controller controller ;
+
     public JoinForcesToEventController(){
 
     }
@@ -19,4 +21,7 @@ public class JoinForcesToEventController {
 
     }
 
+    public void setController(Controller controller){
+        this.controller = controller ;
+    }
 }

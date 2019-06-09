@@ -1,9 +1,11 @@
 package View;
 
+import Controller.Controller;
 import Event.*;
 import Interfaces.ObserveableObject;
 import Objects.StageHolder;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,10 +15,12 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
+import Controller.*;
 
 public class View extends Observable implements IView , ObserveableObject {
 
     private Stage primaryStage ;
+    private Controller controller ;
 
     public View(){
     }
@@ -31,13 +35,15 @@ public class View extends Observable implements IView , ObserveableObject {
 
         FXMLLoader loader = new FXMLLoader();
         try{
-            Parent root = loader.load(getClass().getClassLoader().getResource("UpdateEventFXML.fxml"));
+            Parent root = loader.load(getClass().getClassLoader().getResource("UpdateEventFXML.fxml").openStream());
             Scene scene = new Scene(root);
             //TO DO - add css
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Update event");
             stage.setResizable(false);
+            UpdateEventController ctrl = loader.getController() ;
+            ctrl.setController(controller);
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
@@ -59,11 +65,11 @@ public class View extends Observable implements IView , ObserveableObject {
      * @return EventDetailsContainer object which holds the details of the event
      */
     @Override
-    public void getEventDetailsFromUser(String[] categories) {
+    public void getEventDetailsFromUser(ObservableList<String> categories) {
 
         FXMLLoader loader = new FXMLLoader();
         try{
-            Parent root = loader.load(getClass().getClassLoader().getResource("CreateEventFXML.fxml"));
+            Parent root = loader.load(getClass().getClassLoader().getResource("CreateEventFXML.fxml").openStream());
             Scene scene = new Scene(root);
             ((ChoiceBox)root.getChildrenUnmodifiable().get(5)).setItems(FXCollections.observableArrayList(categories));
             //TO DO - add css
@@ -71,6 +77,8 @@ public class View extends Observable implements IView , ObserveableObject {
             stage.setScene(scene);
             stage.setTitle("Add event");
             stage.setResizable(false);
+            CreateEventController ctrl = loader.getController() ;
+            ctrl.setController(controller);
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
@@ -99,13 +107,15 @@ public class View extends Observable implements IView , ObserveableObject {
 
         FXMLLoader loader = new FXMLLoader();
         try{
-            Parent root = loader.load(getClass().getClassLoader().getResource("JoinForcesFXML.fxml"));
+            Parent root = loader.load(getClass().getClassLoader().getResource("JoinForcesFXML.fxml").openStream());
             Scene scene = new Scene(root);
             //TO DO - add css
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Join Force event");
             stage.setResizable(false);
+            JoinForcesToEventController ctrl = loader.getController() ;
+            ctrl.setController(controller);
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
@@ -146,5 +156,8 @@ public class View extends Observable implements IView , ObserveableObject {
         deleteObserver(o);
     }
 
+    public void setController(Controller controller){
+        this.controller = controller ;
+    }
 
 }
