@@ -2,30 +2,37 @@ package Controller;
 
 import Event.Event;
 import Event.EventDetailsContainer;
+import Interfaces.ObserveableObject;
 import Model.IModel;
 import Model.Model;
 import View.IView;
 import View.View;
-
 import java.time.LocalDateTime;
 import Event.* ;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Controller {
+public class Controller implements Observer {
 
     private IModel model ;
     private IView view ;
 
+
     public Controller(){
         this.model = new Model() ;
         this.view = new View() ;
+        ((ObserveableObject)view).attachObserver(this);
+        ((ObserveableObject)model).attachObserver(this);
+
     }
 
     /**
-     * create event UC . this is the sequence of events by assignment2 just need to fiil all the functions
-     * and check if we need to change more things
+     *
      */
     public void createNewEvent(){
+
+
 
         LocalDateTime now;
 
@@ -72,4 +79,8 @@ public class Controller {
     }
 
 
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
 }
