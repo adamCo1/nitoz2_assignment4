@@ -2,13 +2,16 @@ package Controller;
 
 import Event.*;
 import Objects.ErrorBox;
+import Objects.StageHolder;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class CreateEventController {
 
+    private Controller controller ;
 
     @FXML
     private TextArea eventUpdate ;
@@ -19,6 +22,8 @@ public class CreateEventController {
 
 
     public void cancel_btn(){
+        Stage currentStage = StageHolder.getInstance().getCurrentStageClone() ;
+        currentStage.close();
 
     }
 
@@ -35,12 +40,14 @@ public class CreateEventController {
             box.showErrorStage("Invalid input");
         }
 
-        Event newEvent = new Event(new EventUpdate(update,category) , title) ;
+        Event event = new Event(title ,"a" ,"a" ,"a" ,"a" ,update ,"a" ,true);
 
-        /**
-         * save in the db and things
-         */
+        controller.addEventToDB(event);
 
+    }
+
+    public void setController(Controller controller){
+        this.controller = controller ;
     }
 
 }

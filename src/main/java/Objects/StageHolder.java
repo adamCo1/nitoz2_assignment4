@@ -41,10 +41,12 @@ public class StageHolder {
         return null;
     }
 
-    public void showFirst(){
+    public Stage getCurrentStageClone(){
         if(stageStack.empty())
-            return;
+            return null;
 
-        stageStack.peek().showAndWait();
+        Stage currentStage = this.stageStack.pop() ;
+
+        return currentStage ;
     }
 }

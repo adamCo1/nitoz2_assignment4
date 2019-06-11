@@ -1,16 +1,16 @@
 package View;
 
+import Controller.Controller;
 import Event.*;
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
-
-import java.util.List;
-import java.util.Observer;
 
 public interface IView {
 
     void setPrimaryStage(Stage primaryStage);
-    EventDetailsContainer getEventUpdateFromUser() ;
-    EventDetailsContainer getEventDetailsFromUser(String[] categories) ;
-    JoinRequestContainer getUserJoinRequest();
+    void getEventUpdateFromUser() ;
+    void getEventDetailsFromUser(ObservableList<String> categories) ;
+    void getUserJoinRequest();
+    void setController(Controller controller) ;
     Event getEventToUpdateFromUser();
 }

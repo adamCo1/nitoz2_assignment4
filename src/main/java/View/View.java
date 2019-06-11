@@ -1,11 +1,11 @@
 package View;
 
+import Controller.Controller;
 import Event.*;
-import Event.EventDetailsContainer;
-import Event.JoinRequestContainer;
 import Interfaces.ObserveableObject;
 import Objects.StageHolder;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,14 +13,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import Controller.*;
 
 public class View extends Observable implements IView , ObserveableObject {
 
     private Stage primaryStage ;
+    private Controller controller ;
 
     public View(){
     }
@@ -31,17 +31,19 @@ public class View extends Observable implements IView , ObserveableObject {
     }
 
     @Override
-    public EventDetailsContainer getEventUpdateFromUser() {
+    public void getEventUpdateFromUser() {
 
         FXMLLoader loader = new FXMLLoader();
         try{
-            Parent root = loader.load(getClass().getClassLoader().getResource("UpdateEventFXML.fxml"));
+            Parent root = loader.load(getClass().getClassLoader().getResource("UpdateEventFXML.fxml").openStream());
             Scene scene = new Scene(root);
             //TO DO - add css
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Update event");
             stage.setResizable(false);
+            UpdateEventController ctrl = loader.getController() ;
+            ctrl.setController(controller);
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
@@ -56,7 +58,6 @@ public class View extends Observable implements IView , ObserveableObject {
             e.printStackTrace();
         }
 
-        return null;
     }
 
     /**
@@ -64,11 +65,11 @@ public class View extends Observable implements IView , ObserveableObject {
      * @return EventDetailsContainer object which holds the details of the event
      */
     @Override
-    public EventDetailsContainer getEventDetailsFromUser(String[] categories) {
+    public void getEventDetailsFromUser(ObservableList<String> categories) {
 
         FXMLLoader loader = new FXMLLoader();
         try{
-            Parent root = loader.load(getClass().getClassLoader().getResource("CreateEventFXML.fxml"));
+            Parent root = loader.load(getClass().getClassLoader().getResource("CreateEventFXML.fxml").openStream());
             Scene scene = new Scene(root);
             ((ChoiceBox)root.getChildrenUnmodifiable().get(5)).setItems(FXCollections.observableArrayList(categories));
             //TO DO - add css
@@ -76,6 +77,8 @@ public class View extends Observable implements IView , ObserveableObject {
             stage.setScene(scene);
             stage.setTitle("Add event");
             stage.setResizable(false);
+            CreateEventController ctrl = loader.getController() ;
+            ctrl.setController(controller);
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
@@ -93,21 +96,26 @@ public class View extends Observable implements IView , ObserveableObject {
         /**
          * show the create new event window . change controller when all loaded successfully
          */
-        return null;
+
     }
 
+    /**
+     * show the user the join forces window
+     */
     @Override
-    public JoinRequestContainer getUserJoinRequest() {
+    public void getUserJoinRequest() {
 
         FXMLLoader loader = new FXMLLoader();
         try{
-            Parent root = loader.load(getClass().getClassLoader().getResource("JoinForcesFXML.fxml"));
+            Parent root = loader.load(getClass().getClassLoader().getResource("JoinForcesFXML.fxml").openStream());
             Scene scene = new Scene(root);
             //TO DO - add css
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Join Force event");
             stage.setResizable(false);
+            JoinForcesToEventController ctrl = loader.getController() ;
+            ctrl.setController(controller);
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
@@ -125,8 +133,6 @@ public class View extends Observable implements IView , ObserveableObject {
         /**
          * show the join forces window . change controller when all loaded successfully
          */
-
-        return null;
     }
 
     @Override
@@ -150,5 +156,8 @@ public class View extends Observable implements IView , ObserveableObject {
         deleteObserver(o);
     }
 
+    public void setController(Controller controller){
+        this.controller = controller ;
+    }
 
 }
