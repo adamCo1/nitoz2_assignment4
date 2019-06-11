@@ -11,18 +11,18 @@ public class Event {
     private String incharge;
     private String status;
     private String handlingForce;
-    private boolean open ;
+    private String catagory;
 
-    public Event(String title,String creationTime,String operator,String incharge,String status,String initialUpdate,String handlingForce,boolean open){
+    public Event(String title,String creationTime,String operator,String incharge,String status,String handlingForce,String catagory){
         this.eventTitle = title ;
         this.operator = operator;
         this.incharge = incharge;
         this.status = status;
         this.handlingForce = handlingForce;
         this.creationTime = creationTime;
-        this.open = open ;
+//        this.open = open ;
         this.updateList = new LinkedList<EventUpdate>();
-        this.updateList.add(new EventUpdate(initialUpdate,eventTitle));
+
     }
 
     /**
@@ -33,9 +33,9 @@ public class Event {
         this.updateList.add(update);
     }
 
-    public boolean getOpen(){
-        return this.open;
-    }
+//    public boolean getOpen(){
+//        return this.open;
+//    }
 
 
     public String getEventTitle() {
@@ -62,13 +62,13 @@ public class Event {
         return status;
     }
 
-    public boolean isOpen() {
-        return open;
-    }
+//    public boolean isOpen() {
+//        return open;
+//    }
 
-    public void setOpen(boolean open){
-        this.open = open ;
-    }
+//    public void setOpen(boolean open){
+//        this.open = open ;
+//    }
 
     public String getHandlingForce() {
         return handlingForce;
@@ -84,7 +84,15 @@ public class Event {
                 ", incharge='" + incharge + '\'' +
                 ", status='" + status + '\'' +
                 ", handlingForce='" + handlingForce + '\'' +
-                ", open=" + open +
+//                ", open=" + open +
                 '}';
+    }
+
+    public String getCatagory() {
+        return catagory;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

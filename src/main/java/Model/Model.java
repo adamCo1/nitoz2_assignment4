@@ -2,17 +2,18 @@ package Model;
 
 import Controller.Controller;
 import Event.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 import java.sql.*;
-import java.util.List;
-import java.util.Observable;
+import java.util.*;
 
 public class Model implements IModel {
 
     private Controller controller;
     private DriverConnection driver;
-    private String loggedUser = "";
+    private String loggedUser;
     private final String SYSTEM = "Emer-Agency system";
 
 
@@ -36,7 +37,8 @@ public class Model implements IModel {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS users (\n"
                 + "	username text PRIMARY KEY,\n"
-                + "	organization text NOT NULL\n"
+                + "	organization text NOT NULL,\n"
+                + "	organization double NOT NULL\n"
                 + ");";
 
         try {
@@ -68,6 +70,7 @@ public class Model implements IModel {
                 + "	operator text NOT NULL,\n"
                 + "	incharge text,\n"
                 + "	handling_force text NOT NULL,\n"
+                + " catagory text NOTN NULL,\n"
                 + "	status text NOT NULL,\n"
                 + ");";
 
@@ -225,7 +228,7 @@ public class Model implements IModel {
 
     @Override
     public void createEvent(Event event) {
-        String sql = "INSERT INTO events(title, creation_time, operator, incharge, handling_force, status) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO events(title, creation_time, operator, incharge, handling_force, catagory, status) VALUES(?,?,?,?,?,?,?)";
 
         try {
             String url = "jdbc:sqlite:emer_agency.db";
@@ -238,7 +241,8 @@ public class Model implements IModel {
             pstmt.setString(3, event.getOperator());
             pstmt.setString(4, event.getIncharge());
             pstmt.setString(5, event.getHandlingForce());
-            pstmt.setString(6, event.getStatus());
+            pstmt.setString(6, event.getCatagory());
+            pstmt.setString(7, event.getStatus());
             pstmt.executeUpdate();
             conn.close();
 
@@ -335,9 +339,8 @@ public class Model implements IModel {
     public ObservableList<String> getCatagories() {
 
 
-            //get user inMessages
             ResultSet resultSet;
-            ObservableList<String> catagories = null;
+            ObservableList<String> catagories = FXCollections.observableArrayList();
             String sqlInboundMessages = "SELECT * FROM catagories";
             try {
                 String url = "jdbc:sqlite:emer_agency.db";
@@ -350,7 +353,6 @@ public class Model implements IModel {
                 }
 
 
-//            outboundMessages = this.convertOutMessageResultsToObservableList(resultSetOut);
             } catch (SQLException var7) {
                 System.out.println(var7.getMessage());
                 return null;
@@ -371,7 +373,30 @@ public class Model implements IModel {
 
 
     @Override
-    public void getUser(String username) {
+    public User getUser(String username) {
+
+
+
+        ResultSet resultSet;
+        ObservableList<String> users = FXCollections.observableArrayList();
+        String sqlInboundMessages = "SELECT * FROM users WHERE username = "+ "'" + username + "'";
+        User foundUser = null;
+        try {
+            String url = "jdbc:sqlite:emer_agency.db";
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+            resultSet = stmt.executeQuery(sqlInboundMessages);
+            conn.close();
+            while(resultSet.next()){
+                foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
+            }
+
+
+        } catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+            return null;
+        }
+        return foundUser;
 
 
     }
@@ -379,12 +404,37 @@ public class Model implements IModel {
 
 
     @Override
-    public void getContactSecurityUser(String securityForce) {
+    public User getContactSecurityUser(String securityForce) {
+
+
+        ResultSet resultSet;
+        ObservableList<String> users = FXCollections.observableArrayList();
+        String sqlInboundMessages = "SELECT * FROM users WHERE organization = "+ "'" + securityForce + "'";
+        User foundUser = null;
+        try {
+            String url = "jdbc:sqlite:emer_agency.db";
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+            resultSet = stmt.executeQuery(sqlInboundMessages);
+            conn.close();
+            while(resultSet.next()){
+               foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
+
+            }
+
+
+        } catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+            return null;
+        }
+        return foundUser;
+
 
     }
 
     @Override
     public void setController(Controller controller) {
+        this.controller = controller;
 
     }
 
@@ -396,9 +446,73 @@ public class Model implements IModel {
      * @param
      */
 
-    @Override
-    public void getEvent(String catagory) {
 
+    public ObservableList<Event> getEvent(String field,String value) {
+      //first get the updates
+
+      //hold them and close connection
+
+      //now find the event, create it and append to its updates
+        ResultSet resultSet;
+        ObservableList<Event> events = FXCollections.observableArrayList();
+        //HashMap<String,EventUpdate> updatesMap = new HashMap<String, EventUpdate>();
+        ArrayList<EventUpdate> updates = new ArrayList<EventUpdate>();
+        String sqlEvents = "SELECT * FROM events WHERE "+"'" + field+ "'"+" = " + "'" + value+ "'";
+        User foundUser = null;
+        try {
+            String url = "jdbc:sqlite:emer_agency.db";
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+            resultSet = stmt.executeQuery(sqlEvents);
+            conn.close();
+            while(resultSet.next()){
+                events.add(new Event(resultSet.getString("title"),resultSet.getString("creation_time"),
+                        resultSet.getString("operator"),resultSet.getString("incharge"),
+                        resultSet.getString("status"),resultSet.getString("handling_force"),resultSet.getString("catagory")));
+            }
+
+            //now get all related updates
+            String sqlupdates = "SELECT * FROM updates";
+            conn = DriverManager.getConnection(url);
+            stmt = conn.createStatement();
+            resultSet = stmt.executeQuery(sqlupdates);
+            conn.close();
+            String currEvent="";
+            EventUpdate currUpdate = null;
+            while(resultSet.next()){
+                currEvent = resultSet.getString("event");
+                currUpdate = new EventUpdate(resultSet.getString("content"),resultSet.getString("creation_time"));
+                for(Event e: events){
+                    if(e.getEventTitle().equals(currEvent)) {
+                        e.addUpdateToEvent(currUpdate);
+                        break;
+                    }
+                }
+            }
+
+
+
+            } catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+            return null;
+        }
+        return events;
+
+    }
+
+    @Override
+    public ObservableList<Event> getEventsByCatagory(String name) {
+        return this.getEvent("catagory",name);
+    }
+
+    @Override
+    public ObservableList<Event> getEventByTitle(String name) {
+        return this.getEvent("title",name);
+    }
+
+    @Override
+    public ObservableList<Event> getEventsByForce(String name) {
+        return this.getEvent("handling_force",name);
     }
 
 
@@ -408,24 +522,31 @@ public class Model implements IModel {
     /**
      * edit the notification table
      * @param joinRequest
-     * @param accepterUsername
      */
 
     @Override
-    public void acceptJoinRequest(JoinRequest joinRequest, String accepterUsername) {
+    public void acceptJoinRequest(JoinRequest joinRequest) {
+        String url = "jdbc:sqlite:emer_agency.db";
+        User reciver = getUser(joinRequest.getReciver());
+        String sqlStatement = "UPDATE events SET handling_force = " +"'"+reciver.getForce()+"'"+", incharge = " +"'"+reciver.getUsername()+"'"+" WHERE title = " + "'" + joinRequest.getEvent().getEventTitle() + "'";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+            PreparedStatement pstmt = conn.prepareStatement(sqlStatement);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public Pair<ObservableList<Event>,User> login(String name) {
+        User u = getUser(name);
+        return new Pair(this.getEventsByForce(u.getForce()),u);
+    }
 }
