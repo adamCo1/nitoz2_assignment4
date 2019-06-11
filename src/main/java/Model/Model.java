@@ -27,6 +27,14 @@ public class Model implements IModel {
     /****************************************** TABLES CREATION ************************************************/
 
 
+    public void initModel(){
+        this.createUsersTable();
+        this.createEventTable();
+        this.createNotificationTable();
+        this.createCatagoriesTable();
+        this.createUpdatesTable();
+    }
+
     /**
      * create a new users table
      */
@@ -38,7 +46,7 @@ public class Model implements IModel {
         String sql = "CREATE TABLE IF NOT EXISTS users (\n"
                 + "	username text PRIMARY KEY,\n"
                 + "	organization text NOT NULL,\n"
-                + "	organization double NOT NULL\n"
+                + "	rank double NOT NULL\n"
                 + ");";
 
         try {
@@ -71,7 +79,7 @@ public class Model implements IModel {
                 + "	incharge text,\n"
                 + "	handling_force text NOT NULL,\n"
                 + " catagory text NOTN NULL,\n"
-                + "	status text NOT NULL,\n"
+                + "	status text NOT NULL\n"
                 + ");";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -130,9 +138,10 @@ public class Model implements IModel {
     String sql = "CREATE TABLE IF NOT EXISTS updates (\n"
     + " id INTEGER PRIMARY KEY AUTOINCREMENT,\n"
             + "	event text NOT NULL,\n"
-            + " creation_time text NOT NULL\n"
-            + " content text NOT NULL "
-    + ");";
+            + " creation_time text NOT NULL,\n"
+            + " content text NOT NULL, \n"
+            + " publisher text NOT NULL \n"
+            + ");";
 
     try (Connection conn = DriverManager.getConnection(url);
     Statement stmt = conn.createStatement()) {
@@ -168,7 +177,7 @@ public class Model implements IModel {
                 + " reciver text NOT NULL,\n"
                 + " status text NOT NULL,\n"
                 + " content text NOT NULL,\n"
-                + " creation_time text NOT NULL,\n"
+                + " creation_time text NOT NULL\n"
                 + ");";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -196,9 +205,9 @@ public class Model implements IModel {
      * create new user
      * @return
      */
-    public void createUser(String username,String organization) {
+    public void createUser(String username,String organization,double rank) {
 
-        String sql = "INSERT INTO users(username, organization) VALUES(?,?)";
+        String sql = "INSERT INTO users(username, organization, rank) VALUES(?,?,?)";
 
         try {
             String url = "jdbc:sqlite:emer_agency.db";
@@ -208,6 +217,7 @@ public class Model implements IModel {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, organization);
+            pstmt.setDouble(3, rank);
             pstmt.executeUpdate();
             conn.close();
 
@@ -215,6 +225,29 @@ public class Model implements IModel {
             System.out.println(e.getMessage());
         }
     }
+
+
+    public void createCatagory(String catagoryName){
+
+            String sql = "INSERT INTO catagories(name) VALUES(?)";
+
+            try {
+                String url = "jdbc:sqlite:emer_agency.db";
+                Connection conn = null;
+
+                conn = DriverManager.getConnection(url);
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, catagoryName);
+                pstmt.executeUpdate();
+                conn.close();
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+
+
 
 
     /**
@@ -264,7 +297,7 @@ public class Model implements IModel {
     @Override
     public void addUpdate(EventUpdate update,Event event) {
 
-        String sql = "INSERT INTO updates(event, creation_time, content) VALUES(?,?,?)";
+        String sql = "INSERT INTO updates(event, creation_time, content, publisher) VALUES(?,?,?,?)";
 
         try {
             String url = "jdbc:sqlite:emer_agency.db";
@@ -275,6 +308,9 @@ public class Model implements IModel {
             pstmt.setString(1, event.getEventTitle());
             pstmt.setString(2, update.getCreationTime());
             pstmt.setString(3, update.getUpdate());
+            pstmt.setString(4, update.getPublisher());
+
+
 
             pstmt.executeUpdate();
             conn.close();
@@ -354,7 +390,7 @@ public class Model implements IModel {
 
 
             } catch (SQLException var7) {
-                System.out.println(var7.getMessage());
+                System.out.println("in catch");
                 return null;
             }
             return catagories;
@@ -374,22 +410,22 @@ public class Model implements IModel {
 
     @Override
     public User getUser(String username) {
-
-
-
         ResultSet resultSet;
         ObservableList<String> users = FXCollections.observableArrayList();
-        String sqlInboundMessages = "SELECT * FROM users WHERE username = "+ "'" + username + "'";
+        String sql = "SELECT * FROM users WHERE username = "+ "'" + username + "'";
+
+
         User foundUser = null;
         try {
             String url = "jdbc:sqlite:emer_agency.db";
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
-            resultSet = stmt.executeQuery(sqlInboundMessages);
-            conn.close();
+            resultSet = stmt.executeQuery(sql);
+            System.out.println(resultSet.getString("username"));
             while(resultSet.next()){
                 foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
             }
+            conn.close();
 
 
         } catch (SQLException var7) {
@@ -457,31 +493,32 @@ public class Model implements IModel {
         ObservableList<Event> events = FXCollections.observableArrayList();
         //HashMap<String,EventUpdate> updatesMap = new HashMap<String, EventUpdate>();
         ArrayList<EventUpdate> updates = new ArrayList<EventUpdate>();
-        String sqlEvents = "SELECT * FROM events WHERE "+"'" + field+ "'"+" = " + "'" + value+ "'";
+        //String sqlEvents = "SELECT * FROM events WHERE "+"'" + field+ "'"+" = " + "'" + value+ "'";
+        String sqlEvents = "SELECT * FROM events WHERE "+field+" = " + "'" + value+ "'";
         User foundUser = null;
         try {
             String url = "jdbc:sqlite:emer_agency.db";
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             resultSet = stmt.executeQuery(sqlEvents);
-            conn.close();
             while(resultSet.next()){
                 events.add(new Event(resultSet.getString("title"),resultSet.getString("creation_time"),
                         resultSet.getString("operator"),resultSet.getString("incharge"),
                         resultSet.getString("status"),resultSet.getString("handling_force"),resultSet.getString("catagory")));
             }
+            conn.close();
+
 
             //now get all related updates
             String sqlupdates = "SELECT * FROM updates";
             conn = DriverManager.getConnection(url);
             stmt = conn.createStatement();
             resultSet = stmt.executeQuery(sqlupdates);
-            conn.close();
             String currEvent="";
             EventUpdate currUpdate = null;
             while(resultSet.next()){
                 currEvent = resultSet.getString("event");
-                currUpdate = new EventUpdate(resultSet.getString("content"),resultSet.getString("creation_time"));
+                currUpdate = new EventUpdate(resultSet.getString("content"),resultSet.getString("creation_time"),resultSet.getString("publisher"));
                 for(Event e: events){
                     if(e.getEventTitle().equals(currEvent)) {
                         e.addUpdateToEvent(currUpdate);
@@ -489,10 +526,12 @@ public class Model implements IModel {
                     }
                 }
             }
+            conn.close();
 
 
 
-            } catch (SQLException var7) {
+
+        } catch (SQLException var7) {
             System.out.println(var7.getMessage());
             return null;
         }

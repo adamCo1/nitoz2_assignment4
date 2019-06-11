@@ -30,8 +30,8 @@ public class Controller implements Observer {
      *
      */
     public void createNewEvent(){
-        ObservableList<String> allCategories = model.getCatagories() ;
-        view.getEventDetailsFromUser(allCategories) ;
+        //ObservableList<String> allCategories = model.getCatagories() ;
+        //view.getEventDetailsFromUser(allCategories) ;
     }
 
     public void updateEvent(){
@@ -54,9 +54,9 @@ public class Controller implements Observer {
         this.model.createEvent(event);
     }
 
-    public Event getEventFromDB(String title){
-        return model.getEvent(title);
-    }
+//    public Event getEventFromDB(String title){
+//        return model.getEvent(title);
+//    }
 
     public void addEventUpdateToDB(EventUpdate update , Event event){
         this.model.addUpdate(update , event);

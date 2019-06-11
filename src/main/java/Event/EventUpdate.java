@@ -2,17 +2,16 @@ package Event;
 
 public class EventUpdate {
 
-    private String update , category;
+    private String update;
     private String creationTime;
-
-    public EventUpdate(String update,String creationTime){
+    private String publisher;
+    public EventUpdate(String update,String creationTime,String publisher){
         this.update = update ;
-        this.category = category ;
+        this.publisher = publisher;
         this.creationTime = creationTime;
     }
 
     public EventUpdate(EventUpdate other){
-        this.category = other.category ;
         this.update = other.update ;
     }
 
@@ -23,5 +22,9 @@ public class EventUpdate {
 
     public String getUpdate(){
         return this.update ;
+    }
+
+    public String getPublisher() {
+        return publisher;
     }
 }

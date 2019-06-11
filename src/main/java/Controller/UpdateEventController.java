@@ -32,21 +32,21 @@ public class UpdateEventController  {
         String update = updateField.getText() ;
         String eventTitle = eventField.getText() ;
 
-        Event.Event eventToUpdate = controller.getEventFromDB(eventTitle);
-        if(!eventToUpdate.getOpen()){
-            ErrorBox box = new ErrorBox();
-            box.showErrorStage("Event is closed");
-            return ;
-        }
+//        Event.Event eventToUpdate = controller.getEventFromDB(eventTitle);
+//        if(!eventToUpdate.getOpen()){
+//            ErrorBox box = new ErrorBox();
+//            box.showErrorStage("Event is closed");
+//            return ;
+//        }
 
         /**
          * need authority check here
          */
 
-        EventUpdate eventUpdate = new EventUpdate(update,category);
-        eventToUpdate.addUpdateToEvent(eventUpdate);
-
-        controller.addEventUpdateToDB(eventUpdate , eventToUpdate) ;
+//        EventUpdate eventUpdate = new EventUpdate(update,category);
+//        eventToUpdate.addUpdateToEvent(eventUpdate);
+//
+//        controller.addEventUpdateToDB(eventUpdate , eventToUpdate) ;
 
     }
 
