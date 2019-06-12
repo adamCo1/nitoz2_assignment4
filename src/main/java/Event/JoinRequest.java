@@ -3,15 +3,15 @@ package Event;
 public class JoinRequest {
     private String sender;
     private String reciver;
-    private Event  event;
+    private String  eventTitle;
     private String timeSent;
     private String status;
     private String content;
 
-    public JoinRequest(String sender, String reciver, Event event , String currTime, String status,String content) {
+    public JoinRequest(String sender, String reciver, String eventTitle , String currTime, String status,String content) {
         this.sender = sender;
         this.reciver = reciver;
-        this.event = event;
+        this.eventTitle= eventTitle;
         this.timeSent = currTime;
         this.status = status;
         this.content = content;
@@ -30,8 +30,8 @@ public class JoinRequest {
         return reciver;
     }
 
-    public Event getEvent() {
-        return event;
+    public String getEvent() {
+        return eventTitle;
     }
 
     public String getTimeSent() {
