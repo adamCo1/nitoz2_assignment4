@@ -2,6 +2,7 @@ package Model;
 
 import Controller.Controller;
 import Event.*;
+import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
 
@@ -26,7 +27,9 @@ public interface IModel {
     List<String> getCatagories();
     User getContactSecurityUser(String securityForce);
     void setController(Controller controller);
-    Pair<ObservableList<Event>,User> login(String name);
+    List<ObservableList> login(String username);
+    boolean checkWritePremission(User u,Event e);
+    ObservableList<JoinRequest> getNotifications(String username);
 
 
 

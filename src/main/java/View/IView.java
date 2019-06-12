@@ -5,7 +5,9 @@ import Event.*;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
-public interface IView {
+import java.util.Observer;
+
+public interface IView extends Observer {
 
     void setPrimaryStage(Stage primaryStage);
     void getEventUpdateFromUser() ;

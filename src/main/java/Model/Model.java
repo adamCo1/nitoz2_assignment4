@@ -2,6 +2,7 @@ package Model;
 
 import Controller.Controller;
 import Event.*;
+import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
@@ -9,16 +10,20 @@ import javafx.util.Pair;
 import java.sql.*;
 import java.util.*;
 
-public class Model implements IModel {
+public class Model  extends Observable implements IModel  {
 
     private Controller controller;
     private DriverConnection driver;
     private String loggedUser;
+    private ArrayList<Observer>observers;
     private final String SYSTEM = "Emer-Agency system";
 
 
     public Model() {
+
+
         this.driver = new DriverConnection();
+        this.observers = new ArrayList<>();
     }
 
 /**************************************  DATABASE SECTIONS ***********************************************************/
@@ -41,14 +46,12 @@ public class Model implements IModel {
     public void createUsersTable() {
         // SQLite connection string
         String url = "jdbc:sqlite:emer_agency.db";
-
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS users (\n"
                 + "	username text PRIMARY KEY,\n"
                 + "	organization text NOT NULL,\n"
                 + "	rank double NOT NULL\n"
                 + ");";
-
         try {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
@@ -78,7 +81,7 @@ public class Model implements IModel {
                 + "	operator text NOT NULL,\n"
                 + "	incharge text,\n"
                 + "	handling_force text NOT NULL,\n"
-                + " catagory text NOTN NULL,\n"
+                + " catagory text NOT NULL,\n"
                 + "	status text NOT NULL\n"
                 + ");";
 
@@ -175,9 +178,10 @@ public class Model implements IModel {
                 + " id INTEGER PRIMARY KEY AUTOINCREMENT,\n"
                 + "	sender text NOT NULL,\n"
                 + " reciver text NOT NULL,\n"
+                + " event text NOT NULL,\n"
+                + " creation_time text NOT NULL,\n"
                 + " status text NOT NULL,\n"
-                + " content text NOT NULL,\n"
-                + " creation_time text NOT NULL\n"
+                + " content text NOT NULL\n"
                 + ");";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -383,10 +387,11 @@ public class Model implements IModel {
                 Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement();
                 resultSet = stmt.executeQuery(sqlInboundMessages);
-                conn.close();
                 while(resultSet.next()){
                     catagories.add(resultSet.getString("name"));
                 }
+                conn.close();
+
 
 
             } catch (SQLException var7) {
@@ -438,6 +443,39 @@ public class Model implements IModel {
     }
 
 
+    @Override
+    public ObservableList<JoinRequest> getNotifications(String username) {
+
+
+
+
+        ResultSet resultSet;
+        ObservableList<JoinRequest> notifications = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM notifications WHERE reciver = "+ "'" + username + "'";
+        JoinRequest jr = null;
+        try {
+            String url = "jdbc:sqlite:emer_agency.db";
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+            resultSet = stmt.executeQuery(sql);
+            while(resultSet.next()){
+
+                jr = new JoinRequest(resultSet.getString("sender"),resultSet.getString("reciver"),resultSet.getString("event"),resultSet.getString("creation_time"),resultSet.getString("status"),resultSet.getString("content"));
+                notifications.add(jr);
+            }
+            conn.close();
+
+
+
+        } catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+            return null;
+        }
+        return notifications;
+
+
+
+    }
 
     @Override
     public User getContactSecurityUser(String securityForce) {
@@ -508,7 +546,6 @@ public class Model implements IModel {
             }
             conn.close();
 
-
             //now get all related updates
             String sqlupdates = "SELECT * FROM updates";
             conn = DriverManager.getConnection(url);
@@ -527,10 +564,6 @@ public class Model implements IModel {
                 }
             }
             conn.close();
-
-
-
-
         } catch (SQLException var7) {
             System.out.println(var7.getMessage());
             return null;
@@ -567,25 +600,61 @@ public class Model implements IModel {
     public void acceptJoinRequest(JoinRequest joinRequest) {
         String url = "jdbc:sqlite:emer_agency.db";
         User reciver = getUser(joinRequest.getReciver());
-        String sqlStatement = "UPDATE events SET handling_force = " +"'"+reciver.getForce()+"'"+", incharge = " +"'"+reciver.getUsername()+"'"+" WHERE title = " + "'" + joinRequest.getEvent().getEventTitle() + "'";
+        //update the event
+        String sqlStatement = "UPDATE events SET handling_force = " +"'"+reciver.getForce()+"'"+", incharge = " +"'"+reciver.getUsername()+"'"+" WHERE title = " + "'" + joinRequest.getEvent() + "'";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
             PreparedStatement pstmt = conn.prepareStatement(sqlStatement);
             pstmt.executeUpdate();
+            conn.close();
+            notifyObservers(login(joinRequest.getReciver()));
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+    }
+    /**
+     *
+     * @param username
+     * @return a list of lists! in this order: user data, events, notifications
+     */
+    @Override
+    public List<ObservableList> login(String username) {
+        User u = getUser(username);
+        ObservableList<User> user = FXCollections.observableArrayList();
+        user.add(u);
+        List<ObservableList> ans = new ArrayList<>();
+        ans.add(user);
+        ans.add(this.getEventsByForce(u.getForce()));
+        ans.add(this.getNotifications(username));
 
+        return ans;
+    }
+
+    @Override
+    public boolean checkWritePremission(User u, Event e){
+        User incharge = this.getUser(e.getIncharge());
+        if( u.getForce().equals(incharge.getForce()) && u.getRank()>= incharge.getRank())
+            return true;
+        return false;
 
     }
 
+    @Override
+    public synchronized void addObserver(Observer o) {
+        super.addObserver(o);
+    }
 
     @Override
-    public Pair<ObservableList<Event>,User> login(String name) {
-        User u = getUser(name);
-        return new Pair(this.getEventsByForce(u.getForce()),u);
+    public synchronized void deleteObserver(Observer o) {
+        super.deleteObserver(o);
+    }
+
+    @Override
+    public void notifyObservers(Object arg) {
+
+        super.notifyObservers(arg);
     }
 }
