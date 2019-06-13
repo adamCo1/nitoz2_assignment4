@@ -18,7 +18,7 @@ public class Controller implements Observer {
 
     private IModel model ;
     private IView view ;
-    private User connectedUser ;
+    private User connectedUser , userA , userB ;
 
     public Controller(){
         this.model = new Model() ;
@@ -26,10 +26,17 @@ public class Controller implements Observer {
         this.view.setController(this);
         this.model.setController(this);
         this.model.attachObserver(view);
+        this.userA = new User("fireman_a","fire",7);
+        this.userB = new User("operator_a","operator",10);
+        this.connectedUser = userB ;
     }
 
     public boolean checkWritePermission(Event eventToUpdate){
         return true;
+    }
+
+    public ObservableList<User> getUsersByForce(String type){
+        return null ;
     }
 
     /**
@@ -75,6 +82,18 @@ public class Controller implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
+    }
+
+    public void switchUsers(){
+        if(connectedUser.equals(userA)) {
+            connectedUser = userB;
+            System.out.println(userB.getUsername() + " now connected");
+        }else {
+            connectedUser = userA;
+            System.out.println(userA.getUsername() + " now connected");
+        }
+
+        return;
     }
 
     public User getConnectedUser(){

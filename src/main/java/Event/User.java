@@ -15,6 +15,15 @@ public class User {
         return username;
     }
 
+    public boolean equals(Object o){
+
+        if(!(o instanceof User)){
+            return false;
+        }
+
+        return this.username.equals(((User) o).username);
+    }
+
     public String getForce() {
         return force;
     }
