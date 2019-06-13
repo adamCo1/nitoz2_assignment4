@@ -14,7 +14,7 @@
       <TextField fx:id="eventTitle" layoutX="234.0" layoutY="34.0" prefHeight="31.0" prefWidth="200.0" />
       <TextArea fx:id="eventUpdate" layoutX="234.0" layoutY="83.0" prefHeight="158.0" prefWidth="200.0" />
       <Label layoutX="67.0" layoutY="263.0" prefHeight="21.0" prefWidth="121.0" text="Event Category" />
-      <ChoiceBox fx:id="category" layoutX="234.0" layoutY="258.0" prefHeight="31.0" prefWidth="200.0" />
+      <ChoiceBox fx:id="categoryBox" layoutX="234.0" layoutY="258.0" prefHeight="31.0" prefWidth="200.0" />
       <Button onAction="#submit_btn" fx:id="submitEvent_btn" layoutX="120.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="136.0" text="Submit" />
       <Button onAction="#cancel_btn" fx:id="cancelEvent_btn" layoutX="366.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="136.0" text="Cancel" />
    </children>

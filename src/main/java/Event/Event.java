@@ -22,7 +22,7 @@ public class Event {
         this.creationTime = creationTime;
 //        this.open = open ;
         this.updateList = new LinkedList<EventUpdate>();
-
+        this.catagory = catagory;
     }
 
     /**
@@ -84,7 +84,7 @@ public class Event {
                 ", incharge='" + incharge + '\'' +
                 ", status='" + status + '\'' +
                 ", handlingForce='" + handlingForce + '\'' +
-//                ", open=" + open +
+                ", catagory=" + catagory +
                 '}';
     }
 

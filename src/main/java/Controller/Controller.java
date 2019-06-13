@@ -7,7 +7,10 @@ import Model.Model;
 import Objects.StageHolder;
 import View.IView;
 import View.View;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -22,16 +25,15 @@ public class Controller implements Observer {
         this.view = new View() ;
         this.view.setController(this);
         this.model.setController(this);
-
-
+        this.model.attachObserver(view);
     }
 
     /**
      *
      */
     public void createNewEvent(){
-        //ObservableList<String> allCategories = model.getCatagories() ;
-        //view.getEventDetailsFromUser(allCategories) ;
+        List<String> allCategories = model.getCatagories() ;
+        view.getEventDetailsFromUser(FXCollections.observableArrayList(allCategories)) ;
     }
 
     public void updateEvent(){
@@ -44,6 +46,10 @@ public class Controller implements Observer {
     public void joinForceToEvent(){
         view.getUserJoinRequest();
 
+    }
+
+    public ObservableList<Event> getEvent(String title , String value){
+        return model.getEvent(title,value);
     }
 
     void setPrimaryStage(){

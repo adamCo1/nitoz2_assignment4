@@ -2,6 +2,7 @@ package Model;
 
 import Controller.Controller;
 import Event.*;
+import Interfaces.ObserveableObject;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +11,7 @@ import javafx.util.Pair;
 import java.sql.*;
 import java.util.*;
 
-public class Model  extends Observable implements IModel  {
+public class Model  extends Observable implements IModel , ObserveableObject {
 
     private Controller controller;
     private DriverConnection driver;
@@ -19,8 +20,8 @@ public class Model  extends Observable implements IModel  {
     private final String SYSTEM = "Emer-Agency system";
 
 
-    public Model() {
 
+    public Model() {
 
         this.driver = new DriverConnection();
         this.observers = new ArrayList<>();
@@ -656,5 +657,15 @@ public class Model  extends Observable implements IModel  {
     public void notifyObservers(Object arg) {
 
         super.notifyObservers(arg);
+    }
+
+    @Override
+    public void attachObserver(Observer o) {
+        addObserver(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        deleteObserver(o);
     }
 }

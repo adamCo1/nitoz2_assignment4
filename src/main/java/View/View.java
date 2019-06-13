@@ -17,7 +17,7 @@ import java.util.Observable;
 import java.util.Observer;
 import Controller.*;
 
-public class View extends Observable implements IView , ObserveableObject {
+public class View extends Observable implements IView , Observer {
 
     private Stage primaryStage ;
     private Controller controller ;
@@ -71,7 +71,7 @@ public class View extends Observable implements IView , ObserveableObject {
         try{
             Parent root = loader.load(getClass().getClassLoader().getResource("CreateEventFXML.fxml").openStream());
             Scene scene = new Scene(root);
-            ((ChoiceBox)root.getChildrenUnmodifiable().get(5)).setItems(FXCollections.observableArrayList(categories));
+            ((ChoiceBox)root.getChildrenUnmodifiable().get(5)).setItems(categories);
             //TO DO - add css
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -146,18 +146,12 @@ public class View extends Observable implements IView , ObserveableObject {
         return null;
     }
 
-    @Override
-    public void attachObserver(Observer o) {
-        addObserver(o);
-    }
-
-    @Override
-    public void removeObserver(Observer o) {
-        deleteObserver(o);
-    }
-
     public void setController(Controller controller){
         this.controller = controller ;
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
 }

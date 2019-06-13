@@ -1,13 +1,16 @@
 package Model;
 
 import Event.*;
-import Event.User;
+import java.util.List;
 
 public class ModelTest {
     public static void main(String[] args){
 
         Model model = new Model();
-        model.initModel();
+
+        checkEvents(model);
+        // model.initModel();
+       // insertCategories(model);
         //tableRecreation(model);
 
         /****** TESTED OK **************/
@@ -60,6 +63,22 @@ public class ModelTest {
 
     }
 
+
+    private static void checkEvents(IModel model){
+        List<Event> eventList = model.getEvent("catagory","catA");
+        for (Event e:
+             eventList) {
+            System.out.println(e.toString());
+        }
+    }
+
+    private static void insertCategories(IModel model){
+        String[] categories = {"catA , catB , catC , catD , catE , catE , catF"} ;
+        for (String str:
+             categories) {
+            model.createCatagory(str);
+        }
+    }
 
     private static void tableRecreation(Model model){
          model.createUser("admin","system",10);
