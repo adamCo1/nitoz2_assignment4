@@ -32,4 +32,5 @@ public interface IModel {
     ObservableList<JoinRequest> getNotifications(String username);
     void attachObserver(Observer o) ;
     void removeObserver(Observer o);
+    ObservableList<User> getUsersByForce(String force);
 }

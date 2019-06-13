@@ -445,6 +445,34 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
 
     @Override
+    public ObservableList<User> getUsersByForce(String force) {
+        ResultSet resultSet;
+        ObservableList<User> users = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM users WHERE organization = "+ "'" + force + "'";
+
+
+        User foundUser = null;
+        try {
+            String url = "jdbc:sqlite:emer_agency.db";
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+            resultSet = stmt.executeQuery(sql);
+            System.out.println(resultSet.getString("username"));
+            while(resultSet.next()){
+                foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
+                users.add(foundUser);
+            }
+            conn.close();
+
+
+        } catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+            return null;
+        }
+        return users;
+    }
+
+    @Override
     public ObservableList<JoinRequest> getNotifications(String username) {
 
 
@@ -616,6 +644,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
         }
 
     }
+
     /**
      *
      * @param username
