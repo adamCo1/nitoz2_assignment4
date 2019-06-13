@@ -10,6 +10,8 @@ import View.View;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -31,6 +33,17 @@ public class Controller implements Observer {
         this.userA = new User("fireman_a","fire",7);
         this.userB = new User("operator_a","operator",10);
         this.connectedUser = userB ;
+    }
+
+
+    public String getTimeStamp(){
+        Timestamp time = model.getTimeStamp();
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(time);
+        return timeStamp;
+    }
+
+    public void sendJoinRequest(JoinRequest joinRequest){
+        this.model.sendJoinRequest(joinRequest);
     }
 
     public boolean checkWritePermission(Event eventToUpdate){

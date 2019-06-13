@@ -40,7 +40,7 @@ public class CreateEventController {
             box.showErrorStage("Invalid input");
         }
 
-        Event event = new Event(title ,"a" ,"a" ,"a" ,"a" ,update ,category );
+        Event event = new Event(title ,controller.getTimeStamp() ,"a" ,"a" ,"a" ,update ,category );
 
         controller.addEventToDB(event);
         cancel_btn();

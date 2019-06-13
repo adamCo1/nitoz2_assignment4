@@ -10,6 +10,7 @@ import javafx.util.Pair;
 
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 
 public class Model  extends Observable implements IModel , ObserveableObject {
 
@@ -252,8 +253,13 @@ public class Model  extends Observable implements IModel , ObserveableObject {
         }
 
 
+    @Override
+    public Timestamp getTimeStamp() {
+        Date date = new Date();
+        Timestamp timestamp = new Timestamp(date.getTime());
 
-
+        return timestamp ;
+    }
 
     /**
      * create new event

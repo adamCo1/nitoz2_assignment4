@@ -64,7 +64,7 @@ public class UpdateEventController  {
         }
 
         //finish the update
-        EventUpdate eventUpdate = new EventUpdate(update,"time","adam");
+        EventUpdate eventUpdate = new EventUpdate(update,controller.getTimeStamp(),"adam");
         eventToUpdate.addUpdateToEvent(eventUpdate);
         controller.addEventUpdateToDB(eventUpdate , eventToUpdate) ;
         cancel_btn();

@@ -70,7 +70,13 @@ public class JoinForcesToEventController {
 
     public void submit_btn(){
 
-        System.out.println("sent requst to" + currentUserSelected.getUsername());
+        String sender , receiver , title;
+
+        title = eventsField.getText() ;
+        receiver = currentUserSelected.getUsername();
+        sender = controller.getConnectedUser().getUsername();
+        controller.sendJoinRequest(new JoinRequest(sender,receiver,title, controller.getTimeStamp(),"open","content"));
+
         cancel_btn();
     }
 

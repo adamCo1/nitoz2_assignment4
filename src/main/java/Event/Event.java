@@ -1,5 +1,6 @@
 package Event;
 
+import java.sql.Timestamp;
 import java.util.LinkedList;
 
 public class Event {
@@ -13,7 +14,7 @@ public class Event {
     private String handlingForce;
     private String catagory;
 
-    public Event(String title,String creationTime,String operator,String incharge,String status,String handlingForce,String catagory){
+    public Event(String title, String creationTime, String operator, String incharge, String status, String handlingForce, String catagory){
         this.eventTitle = title ;
         this.operator = operator;
         this.incharge = incharge;

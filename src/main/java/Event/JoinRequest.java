@@ -1,5 +1,7 @@
 package Event;
 
+import java.sql.Timestamp;
+
 public class JoinRequest {
     private String sender;
     private String reciver;
@@ -8,7 +10,7 @@ public class JoinRequest {
     private String status;
     private String content;
 
-    public JoinRequest(String sender, String reciver, String eventTitle , String currTime, String status,String content) {
+    public JoinRequest(String sender, String reciver, String eventTitle , String currTime, String status, String content) {
         this.sender = sender;
         this.reciver = reciver;
         this.eventTitle= eventTitle;

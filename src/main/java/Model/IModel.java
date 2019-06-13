@@ -3,11 +3,16 @@ package Model;
 import Controller.Controller;
 import Event.*;
 import javafx.collections.ObservableList;
+import javafx.util.converter.TimeStringConverter;
+
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Observer;
 
 public interface IModel {
 
+    Timestamp getTimeStamp();
     void createEvent(Event event) ;
     void sendJoinRequest(JoinRequest joinRequest);
     User getUser(String username);
