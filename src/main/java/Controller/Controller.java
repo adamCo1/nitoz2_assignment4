@@ -18,7 +18,7 @@ public class Controller implements Observer {
 
     private IModel model ;
     private IView view ;
-
+    private User connectedUser ;
 
     public Controller(){
         this.model = new Model() ;
@@ -26,6 +26,10 @@ public class Controller implements Observer {
         this.view.setController(this);
         this.model.setController(this);
         this.model.attachObserver(view);
+    }
+
+    public boolean checkWritePermission(Event eventToUpdate){
+        return model.checkWritePremission(connectedUser , eventToUpdate);
     }
 
     /**
@@ -71,5 +75,9 @@ public class Controller implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
+    }
+
+    public User getConnectedUser(){
+        return this.connectedUser ;
     }
 }
