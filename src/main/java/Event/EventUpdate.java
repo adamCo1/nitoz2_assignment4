@@ -5,6 +5,7 @@ public class EventUpdate {
     private String update;
     private String creationTime;
     private String publisher;
+
     public EventUpdate(String update,String creationTime,String publisher){
         this.update = update ;
         this.publisher = publisher;
@@ -26,5 +27,9 @@ public class EventUpdate {
 
     public String getPublisher() {
         return publisher;
+    }
+
+    public String toString(){
+        return update;
     }
 }

@@ -388,12 +388,13 @@ public class Model  extends Observable implements IModel , ObserveableObject {
                 Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement();
                 resultSet = stmt.executeQuery(sqlInboundMessages);
-                while(resultSet.next()){
-                    catagories.add(resultSet.getString("name"));
+                String resultString = resultSet.getString("name");
+                for (String cata:
+                     resultString.split(",")) {
+                    catagories.add(cata);
                 }
+
                 conn.close();
-
-
 
             } catch (SQLException var7) {
                 System.out.println("in catch");

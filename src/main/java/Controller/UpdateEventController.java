@@ -1,6 +1,7 @@
 package Controller;
 
 import Event.*;
+import Objects.ErrorBox;
 import Objects.StageHolder;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -41,7 +42,7 @@ public class UpdateEventController  {
         List<Event> eventsToShow = controller.getEvent("title", eventField.getText());
         if (eventsToShow != null) {
             key.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEventTitle()));
-            value.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toString()));
+            value.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUpdatesStrings()));
             table.setItems(FXCollections.observableArrayList(eventsToShow));
         }
     }
@@ -52,16 +53,21 @@ public class UpdateEventController  {
         String update = updateField.getText() ;
         String eventTitle = eventField.getText() ;
 
-        //Event eventToUpdate = controller.getEvent("title",eventTitle);
+        List<Event> eventList = controller.getEvent("title",eventTitle);
+        Event eventToUpdate = eventList.get(0);
 
-        /**
-         * need authority check here
-         */
-      // EventUpdate eventUpdate = new EventUpdate(update,"time","adam");
-      // eventToUpdate.addUpdateToEvent(eventUpdate);
+        //check for user permissions
+        if(!controller.checkWritePermission(eventToUpdate)){
+            ErrorBox box = new ErrorBox() ;
+            box.showErrorStage("Access for updating this event denied.");
+            return;
+        }
 
-     //  controller.addEventUpdateToDB(eventUpdate , eventToUpdate) ;
-
+        //finish the update
+        EventUpdate eventUpdate = new EventUpdate(update,"time","adam");
+        eventToUpdate.addUpdateToEvent(eventUpdate);
+        controller.addEventUpdateToDB(eventUpdate , eventToUpdate) ;
+        cancel_btn();
     }
 
     public void setController(Controller controller){
