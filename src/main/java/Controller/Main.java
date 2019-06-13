@@ -16,7 +16,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         Parent root = loader.load(getClass().getClassLoader().getResource("MainWindowFXML.fxml"));
         primaryStage.setTitle("assignment4");
-        primaryStage.setScene(new Scene(root, 500, 600));
+        primaryStage.setScene(new Scene(root, 600, 600));
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

@@ -29,7 +29,7 @@ public class Controller implements Observer {
     }
 
     public boolean checkWritePermission(Event eventToUpdate){
-        return model.checkWritePremission(connectedUser , eventToUpdate);
+        return true;
     }
 
     /**

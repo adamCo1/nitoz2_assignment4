@@ -42,7 +42,7 @@ public class UpdateEventController  {
         List<Event> eventsToShow = controller.getEvent("title", eventField.getText());
         if (eventsToShow != null) {
             key.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEventTitle()));
-            value.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toString()));
+            value.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUpdatesStrings()));
             table.setItems(FXCollections.observableArrayList(eventsToShow));
         }
     }
@@ -67,7 +67,7 @@ public class UpdateEventController  {
         EventUpdate eventUpdate = new EventUpdate(update,"time","adam");
         eventToUpdate.addUpdateToEvent(eventUpdate);
         controller.addEventUpdateToDB(eventUpdate , eventToUpdate) ;
-
+        cancel_btn();
     }
 
     public void setController(Controller controller){

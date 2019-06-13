@@ -74,6 +74,17 @@ public class Event {
         return handlingForce;
     }
 
+    public String getUpdatesStrings(){
+        String ans = "";
+
+        for (EventUpdate update:
+             updateList) {
+            ans += update.toString() + ", ";
+        }
+
+        return ans.substring(0,ans.length()-2);
+    }
+
     @Override
     public String toString() {
         return "Event{" +
