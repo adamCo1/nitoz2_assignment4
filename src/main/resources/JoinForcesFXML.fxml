@@ -16,7 +16,7 @@
         <Label layoutX="14.0" layoutY="259.0" prefHeight="21.0" prefWidth="94.0" text="Force Name" />
         <Button layoutX="105.0" layoutY="538.0" mnemonicParsing="false" onAction="#submit_btn" prefHeight="31.0" prefWidth="136.0" text="Submit" />
         <Button layoutX="409.0" layoutY="538.0" mnemonicParsing="false" onAction="#cancel_btn" prefHeight="31.0" prefWidth="136.0" text="Cancel" />
-      <Button layoutX="346.0" layoutY="254.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="164.0" text="Search Force" />
+      <Button onAction="#searchUsers" layoutX="346.0" layoutY="254.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="164.0" text="Search Force" />
       <TextField fx:id="eventsField" layoutX="178.0" layoutY="35.0" prefHeight="31.0" prefWidth="127.0" />
       <Button fx:id="searchEvents_btn" layoutX="357.0" layoutY="35.0" mnemonicParsing="false" onAction="#searchEvents" prefHeight="31.0" prefWidth="164.0" text="Search Events" />
       <TableView fx:id="eventsTable" layoutX="173.0" layoutY="86.0" prefHeight="120.0" prefWidth="533.0">

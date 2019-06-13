@@ -29,10 +29,10 @@ public class JoinForcesToEventController {
     private Controller controller ;
 
     public JoinForcesToEventController(){
-        initListeners();
+
     }
 
-    private void initListeners(){
+    public void initListeners(){
 
         usersTable.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -70,7 +70,7 @@ public class JoinForcesToEventController {
 
     public void submit_btn(){
 
-
+        System.out.println("sent requst to" + currentUserSelected.getUsername());
         cancel_btn();
     }
 

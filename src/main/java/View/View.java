@@ -116,6 +116,7 @@ public class View extends Observable implements IView , Observer {
             stage.setResizable(false);
             JoinForcesToEventController ctrl = loader.getController() ;
             ctrl.setController(controller);
+            ctrl.initListeners();
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override

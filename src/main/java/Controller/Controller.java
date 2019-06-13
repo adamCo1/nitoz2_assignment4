@@ -26,6 +26,8 @@ public class Controller implements Observer {
         this.view.setController(this);
         this.model.setController(this);
         this.model.attachObserver(view);
+        ((Model)model).createUser("fireman_a","fire",7);
+        ((Model)model).createUser("operator_a","operator",10);
         this.userA = new User("fireman_a","fire",7);
         this.userB = new User("operator_a","operator",10);
         this.connectedUser = userB ;
@@ -36,7 +38,7 @@ public class Controller implements Observer {
     }
 
     public ObservableList<User> getUsersByForce(String type){
-        return null ;
+        return model.getUsersByForce(type) ;
     }
 
     /**
