@@ -53,6 +53,12 @@ public class UpdateEventController  {
         String update = updateField.getText() ;
         String eventTitle = eventField.getText() ;
 
+        if(category.equals("") || update.equals("") || eventTitle.equals("")){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("Must fill update and title fields");
+            return;
+        }
+
         List<Event> eventList = controller.getEvent("title",eventTitle);
         Event eventToUpdate = eventList.get(0);
 

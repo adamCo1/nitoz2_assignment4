@@ -1,6 +1,7 @@
 package Controller;
 
 import Event.*;
+import Objects.ErrorBox;
 import Objects.StageHolder;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
@@ -11,10 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import sun.java2d.pipe.SpanShapeRenderer;
 
-
-public class JoinForcesToEventController {
+public class NotificationHandler {
 
     @FXML
     private TextField eventsField , userField;
@@ -28,7 +27,7 @@ public class JoinForcesToEventController {
     private User currentUserSelected ;
     private Controller controller ;
 
-    public JoinForcesToEventController(){
+    public NotificationHandler(){
 
     }
 
@@ -73,6 +72,18 @@ public class JoinForcesToEventController {
         String sender , receiver , title;
 
         title = eventsField.getText() ;
+        if(title.equals("")){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("Must fill event title first");
+            return;
+        }
+
+        if(currentUserSelected == null){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("Must select a user");
+            return;
+        }
+
         receiver = currentUserSelected.getUsername();
         sender = controller.getConnectedUser().getUsername();
         controller.sendJoinRequest(new JoinRequest(sender,receiver,title, controller.getTimeStamp(),"open","content"));

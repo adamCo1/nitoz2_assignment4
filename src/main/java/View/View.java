@@ -77,7 +77,7 @@ public class View extends Observable implements IView , Observer {
             stage.setScene(scene);
             stage.setTitle("Add event");
             stage.setResizable(false);
-            CreateEventController ctrl = loader.getController() ;
+            EventHandlerr ctrl = loader.getController() ;
             ctrl.setController(controller);
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -114,7 +114,7 @@ public class View extends Observable implements IView , Observer {
             stage.setScene(scene);
             stage.setTitle("Join Force event");
             stage.setResizable(false);
-            JoinForcesToEventController ctrl = loader.getController() ;
+            NotificationHandler ctrl = loader.getController() ;
             ctrl.setController(controller);
             ctrl.initListeners();
             StageHolder.getInstance().holdStage(stage);

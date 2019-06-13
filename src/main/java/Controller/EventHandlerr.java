@@ -9,7 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class CreateEventController {
+public class EventHandlerr {
 
     private Controller controller ;
 
@@ -33,6 +33,13 @@ public class CreateEventController {
 
         title = eventTitle.getText() ;
         update = eventUpdate.getText() ;
+
+        if(title.equals("") || update.equals("")){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("Must fill title field and update field");
+            return;
+        }
+
         category = (String) categoryBox.getSelectionModel().getSelectedItem() ;
 
         if(title.equals("") || update.equals("") || category.equals("") || category == null) {
