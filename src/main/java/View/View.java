@@ -137,6 +137,68 @@ public class View extends Observable implements IView , Observer {
     }
 
     @Override
+    public void showUserEvents(ObservableList<Event> eventList){
+
+        FXMLLoader loader = new FXMLLoader();
+        try{
+            Parent root = loader.load(getClass().getClassLoader().getResource("UserEventsFXML.fxml").openStream());
+            Scene scene = new Scene(root);
+            //TO DO - add css
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Events By User");
+            stage.setResizable(false);
+            UserEventsController ctrl = loader.getController() ;
+            ctrl.initializeTable(eventList);
+            StageHolder.getInstance().holdStage(stage);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    StageHolder.getInstance().getStage() ;
+                }
+            });
+
+            stage.showAndWait();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @Override
+    public void login(){
+
+        FXMLLoader loader = new FXMLLoader();
+        try{
+            Parent root = loader.load(getClass().getClassLoader().getResource("LoginFXML.fxml").openStream());
+            Scene scene = new Scene(root);
+            //TO DO - add css
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.setResizable(false);
+            LogInController ctrl = loader.getController() ;
+            ctrl.setController(controller);
+            StageHolder.getInstance().holdStage(stage);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    StageHolder.getInstance().getStage() ;
+                }
+            });
+
+            stage.showAndWait();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @Override
     public Event getEventToUpdateFromUser() {
 
 

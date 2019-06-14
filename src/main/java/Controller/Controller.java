@@ -1,15 +1,14 @@
 package Controller;
 
 import Event.*;
-import Interfaces.ObserveableObject;
 import Model.IModel;
 import Model.Model;
+import Objects.ErrorBox;
 import Objects.StageHolder;
 import View.IView;
 import View.View;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -99,16 +98,26 @@ public class Controller implements Observer {
 
     }
 
-    public void switchUsers(){
-        if(connectedUser.equals(userA)) {
-            connectedUser = userB;
-            System.out.println(userB.getUsername() + " now connected");
-        }else {
-            connectedUser = userA;
-            System.out.println(userA.getUsername() + " now connected");
-        }
+    public void login(){
+        view.login();
+    }
 
-        return;
+    public void loginFromDB(String username){
+        connectedUser = model.getUser(username) ;
+        try{
+            System.out.println(connectedUser.getUsername());
+        }catch (Exception e){
+
+        }
+    }
+
+    public void userEvents() {
+        try {
+            view.showUserEvents(model.getEventsByForce(connectedUser.getForce()));
+        } catch (Exception e) {
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("Not connected to any user");
+        }
     }
 
     public User getConnectedUser(){

@@ -19,7 +19,6 @@ public interface IModel {
     ObservableList<Event> getEventsByCatagory(String name);
     ObservableList<Event> getEventByTitle(String name);
     ObservableList<Event> getEventsByForce(String name);
-
     void acceptJoinRequest(JoinRequest joinRequest);
 
     /**

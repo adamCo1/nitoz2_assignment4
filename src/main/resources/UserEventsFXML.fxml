@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserEventsController">
+   <children>
+      <Button onAction="#back" layoutX="216.0" layoutY="336.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="168.0" text="Back" />
+      <TableView fx:id="eventTable" layoutX="65.0" layoutY="28.0" prefHeight="288.0" prefWidth="480.0">
+        <columns>
+          <TableColumn fx:id="key" prefWidth="91.0" text="C1" />
+          <TableColumn fx:id="value" prefWidth="387.0" text="C2" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

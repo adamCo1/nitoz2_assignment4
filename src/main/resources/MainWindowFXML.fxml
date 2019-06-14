@@ -8,6 +8,7 @@
       <Button fx:id="createEvent_btn" layoutX="179.0" layoutY="47.0" mnemonicParsing="false" onAction="#createNewEvent" prefHeight="31.0" prefWidth="217.0" text="Create Event" />
       <Button fx:id="updateEvent_btn" layoutX="179.0" layoutY="102.0" mnemonicParsing="false" onAction="#updateEvent" prefHeight="31.0" prefWidth="217.0" text="Update Event" />
       <Button fx:id="joinForces_btn" layoutX="179.0" layoutY="157.0" mnemonicParsing="false" onAction="#joinForceToEvent" prefHeight="31.0" prefWidth="217.0" text="Join Forces To Event" />
-      <Button fx:id="switch_btn" onAction="#switchUsers" layoutX="179.0" layoutY="236.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="Switch Users" />
+      <Button fx:id="userevent_btn" layoutX="179.0" layoutY="214.0" mnemonicParsing="false" onAction="#userEvents" prefHeight="31.0" prefWidth="217.0" text="User Events" />
+      <Button onAction="#login" layoutX="179.0" layoutY="267.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="log in" />
    </children>
 </AnchorPane>

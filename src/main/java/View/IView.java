@@ -15,4 +15,6 @@ public interface IView extends Observer {
     void getUserJoinRequest();
     void setController(Controller controller) ;
     Event getEventToUpdateFromUser();
+    void showUserEvents(ObservableList<Event> eventList);
+    void login();
 }
