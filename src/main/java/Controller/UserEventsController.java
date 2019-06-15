@@ -1,28 +1,52 @@
 package Controller;
 
-import Event.Event;
+import Event.*;
 import Objects.StageHolder;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class UserEventsController {
 
 
+    private Controller controller ;
+    private JoinRequest currentRequestSelected ;
+
     @FXML
-    private TableView eventTable ;
+    private TableView eventTable , requestsTable ;
     @FXML
-    private TableColumn<Event,String> key,value ;
+    private TableColumn<Event,String> key,value;
+    @FXML
+    private TableColumn<JoinRequest,String> requestKey , requestValue ;
 
 
     public void initializeTable(ObservableList<Event> eventList){
+
+        requestsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                currentRequestSelected =(JoinRequest) requestsTable.getSelectionModel().getSelectedItem();
+            }
+        });
+
+        List<ObservableList> eventsAndRequests = controller.getJoinRequests() ;
+        if(eventsAndRequests == null)
+            return;
+
+        requestKey.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSender()));
+        requestValue.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getContent()));
+        requestsTable.setItems(eventsAndRequests.get(1));
+
         key.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEventTitle()));
         value.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toString()));
-
-        eventTable.setItems(eventList);
+        eventTable.setItems(eventsAndRequests.get(0));
     }
 
     public void back(){
@@ -30,4 +54,12 @@ public class UserEventsController {
         currentStage.close();
     }
 
+
+    public void acceptRequest(){
+
+    }
+
+    public void setController(Controller controller){
+        this.controller = controller;
+    }
 }

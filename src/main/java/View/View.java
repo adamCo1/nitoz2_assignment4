@@ -149,6 +149,7 @@ public class View extends Observable implements IView , Observer {
             stage.setTitle("Events By User");
             stage.setResizable(false);
             UserEventsController ctrl = loader.getController() ;
+            ctrl.setController(controller);
             ctrl.initializeTable(eventList);
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {

@@ -14,7 +14,7 @@ public class Event {
     private String handlingForce;
     private String catagory;
 
-    public Event(String title, String creationTime, String operator, String incharge, String status, String handlingForce, String catagory){
+    public Event(String title, String creationTime, String operator, String incharge, String update, String handlingForce, String catagory){
         this.eventTitle = title ;
         this.operator = operator;
         this.incharge = incharge;
@@ -24,6 +24,7 @@ public class Event {
 //        this.open = open ;
         this.updateList = new LinkedList<EventUpdate>();
         this.catagory = catagory;
+        this.updateList.add(new EventUpdate(update , creationTime , operator));
     }
 
     /**
@@ -79,11 +80,16 @@ public class Event {
         if(this.updateList.size() == 0 )
             return "";
         String ans = "";
+        int times = 0 ;
 
         for (EventUpdate update:
              updateList) {
             ans += update.toString() + ", ";
+            times++;
         }
+
+        if(times == 0)
+            return "";
 
         return ans.substring(0,ans.length()-2);
     }

@@ -31,7 +31,7 @@ public interface IModel {
     List<String> getCatagories();
     User getContactSecurityUser(String securityForce);
     void setController(Controller controller);
-    List<ObservableList> login(String username);
+    List<ObservableList> getJoinRequests(String username);
     boolean checkWritePremission(User u,Event e);
     ObservableList<JoinRequest> getNotifications(String username);
     void attachObserver(Observer o) ;
