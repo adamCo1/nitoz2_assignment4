@@ -25,16 +25,18 @@ public class ModelTest {
             model.createNotificationTable();
             model.createEventTable();
             model.createUsersTable();
-            User operator = new User("admin","operators",10);
-            User policeOperator = new User("policeContact","police",7);
-            User policeOfficer  = new User("policeOfficer","police",10);
-            String catagory = "shooting";
-            model.createUser(operator.getUsername(),operator.getForce(),operator.getRank());
-            model.createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
-            model.createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
-            Event e = new Event("shootingAtHarlem","timestmp","admin","none","open","none" ,"shooting","open");
-            model.createCatagory(catagory);
-            model.createEvent(e);
+        User operator = new User("admin","operators",10);
+        User policeOperator = new User("policeContact","police",7);
+        User policeOfficer  = new User("policeOfficer","police",10);
+        String catagory = "shooting";
+        ((Model)model).createUser(operator.getUsername(),operator.getForce(),operator.getRank());
+        ((Model)model).createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
+        ((Model)model).createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
+        Event e = new Event("shootingAtHarlem","timestmp","admin","admin","UPDATE 1","operators" ,"shooting","open");
+        Event e1 = new Event("ShootingAtDaled" , "timestamp" , "admin","admin","UPDATE 1" , "operators" , "shooting","open");
+        model.createCatagory(catagory);
+        model.createEvent(e);
+        model.createEvent(e1);
             /********************************************************/
             //send to Model function
             // model.createUser("admin","system",10);

@@ -40,18 +40,18 @@ public class Controller implements Observer {
 
 
     public void initUsersAndEvents(){
-        User operator = new User("admin","operators",10);
-        User policeOperator = new User("policeContact","police",7);
-        User policeOfficer  = new User("policeOfficer","police",10);
-        String catagory = "shooting";
-        ((Model)model).createUser(operator.getUsername(),operator.getForce(),operator.getRank());
-        ((Model)model).createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
-        ((Model)model).createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
-        Event e = new Event("shootingAtHarlem","timestmp","admin","none","UPDATE 1","none" ,"shooting","open");
-        Event e1 = new Event("ShootingAtDaled" , getTimeStamp() , "admin","none","UPDATE 1" , "none" , "shooting","open");
-        model.createCatagory(catagory);
-        model.createEvent(e);
-        model.createEvent(e1);
+//        User operator = new User("admin","operators",10);
+//        User policeOperator = new User("policeContact","police",7);
+//        User policeOfficer  = new User("policeOfficer","police",10);
+//        String catagory = "shooting";
+//        ((Model)model).createUser(operator.getUsername(),operator.getForce(),operator.getRank());
+//        ((Model)model).createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
+//        ((Model)model).createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
+//        Event e = new Event("shootingAtHarlem","timestmp","admin","admin","UPDATE 1","operators" ,"shooting","open");
+//        Event e1 = new Event("ShootingAtDaled" , getTimeStamp() , "admin","admin","UPDATE 1" , "operators" , "shooting","open");
+//        model.createCatagory(catagory);
+//        model.createEvent(e);
+//        model.createEvent(e1);
     }
 
 

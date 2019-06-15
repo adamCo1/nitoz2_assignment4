@@ -526,11 +526,12 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             resultSet = stmt.executeQuery(sqlInboundMessages);
-            conn.close();
             while(resultSet.next()){
                foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
 
             }
+            conn.close();
+
 
 
         } catch (SQLException var7) {
@@ -624,8 +625,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
     @Override
     public ObservableList<Event> getEventsByForce(String name) {
-        User u = getUser(name);
-        if(u.getForce().equals("operators"))
+        if(name.equals("operators"))
             return this.getEvent("all","");
 
         return this.getEvent("handling_force",name);
