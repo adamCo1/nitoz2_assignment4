@@ -290,6 +290,8 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             pstmt.setString(7, event.getStatus());
             pstmt.executeUpdate();
             conn.close();
+            EventUpdate update = event.getUpdateList().get(0);
+            this.addUpdate(update,event);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
