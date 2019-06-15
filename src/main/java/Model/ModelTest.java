@@ -18,21 +18,23 @@ public class ModelTest {
             //create user
         /**************************************************************/
 
-//            model.createUpdatesTable();
-//            model.createCatagoriesTable();
-//            model.createNotificationTable();
-//            model.createEventTable();
-//            model.createUsersTable();
-//            User operator = new User("admin","operators",10);
-//            User policeOperator = new User("policeContact","police",7);
-//            User policeOfficer  = new User("policeOfficer","police",10);
-//            String catagory = "shooting";
-//            model.createUser(operator.getUsername(),operator.getForce(),operator.getRank());
-//            model.createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
-//            model.createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
-//            Event e = new Event("shootingAtHarlem","timestmp","admin","none","open","none" ,"shooting");
-//            model.createCatagory(catagory);
-//            model.createEvent(e);
+
+
+            model.createUpdatesTable();
+            model.createCatagoriesTable();
+            model.createNotificationTable();
+            model.createEventTable();
+            model.createUsersTable();
+            User operator = new User("admin","operators",10);
+            User policeOperator = new User("policeContact","police",7);
+            User policeOfficer  = new User("policeOfficer","police",10);
+            String catagory = "shooting";
+            model.createUser(operator.getUsername(),operator.getForce(),operator.getRank());
+            model.createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
+            model.createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
+            Event e = new Event("shootingAtHarlem","timestmp","admin","none","open","none" ,"shooting","open");
+            model.createCatagory(catagory);
+            model.createEvent(e);
             /********************************************************/
             //send to Model function
             // model.createUser("admin","system",10);
@@ -97,13 +99,13 @@ public class ModelTest {
         }
     }
 
-    private static void tableRecreation(Model model){
-         model.createUser("admin","system",10);
-         Event e = new Event("crime","timestmp","admin","none","open","none" ,
-           "crime");
-         model.createEvent(e);
-
-
-    }
+//    private static void tableRecreation(Model model){
+//         model.createUser("admin","system",10);
+//         Event e = new Event("crime","timestmp","admin","none","open","none" ,
+//           "crime");
+//         model.createEvent(e);
+//
+//
+//    }
 
 }
