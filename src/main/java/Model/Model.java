@@ -655,6 +655,13 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             pstmt.executeUpdate();
             conn.close();
             //notifyObservers(acceptJoinRequest(joinRequest.getReciver()));
+            String sqlDelete = "DELETE * FROM notifications WHERE event = "+ "'" + joinRequest.getEvent() + "'";
+            conn = DriverManager.getConnection(url);
+            PreparedStatement pstmt1 = conn.prepareStatement(sqlDelete);
+            pstmt1.executeUpdate();
+            conn.close();
+
+
 
         } catch (SQLException e) {
             e.printStackTrace();
