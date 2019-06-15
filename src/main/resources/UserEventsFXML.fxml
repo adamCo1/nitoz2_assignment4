@@ -13,12 +13,14 @@
         <columns>
           <TableColumn fx:id="key" prefWidth="91.0" text="Event Title" />
           <TableColumn fx:id="value" prefWidth="387.0" text="Event Details" />
+            <TableColumn fx:id="eventTitle" prefWidth="131.0" text="Title" />
         </columns>
       </TableView>
       <TableView fx:id="requestsTable" layoutX="237.0" layoutY="22.0" prefHeight="250.0" prefWidth="655.0">
         <columns>
           <TableColumn fx:id="requestKey" prefWidth="97.0" text="Sender" />
-          <TableColumn fx:id="requestValue" prefWidth="282.0" text="Event Details" />
+            <TableColumn fx:id="requestTitle" prefWidth="158.0" text="Title" />
+          <TableColumn fx:id="requestValue" prefWidth="199.0" text="Event Details" />
         </columns>
       </TableView>
       <Label layoutX="39.0" layoutY="300.0" prefHeight="21.0" prefWidth="129.0" text="Active Events" />

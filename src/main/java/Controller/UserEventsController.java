@@ -23,9 +23,9 @@ public class UserEventsController {
     @FXML
     private TableView eventTable , requestsTable ;
     @FXML
-    private TableColumn<Event,String> key,value;
+    private TableColumn<Event,String> key,value , eventTitle ;
     @FXML
-    private TableColumn<JoinRequest,String> requestKey , requestValue ;
+    private TableColumn<JoinRequest,String> requestKey , requestValue , requestTitle;
 
 
     public void initializeTable(){
@@ -43,10 +43,12 @@ public class UserEventsController {
 
         requestKey.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSender()));
         requestValue.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getContent()));
+        requestTitle.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEvent()));
         requestsTable.setItems(eventsAndRequests.get(1));
 
         key.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEventTitle()));
         value.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUpdatesStrings()));
+        eventTitle.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEventTitle()));
         eventTable.setItems(eventsAndRequests.get(0));
     }
 

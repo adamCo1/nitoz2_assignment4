@@ -28,10 +28,10 @@ public class Controller implements Observer {
         this.model.setController(this);
         this.model.attachObserver(view);
         ((Model)model).initModel();
-        //((Model)model).createUser("adam","fire",10);
-        //((Model)model).createUser("yuval","fire",10);
+        ((Model)model).createUser("adam","fire",10);
+        ((Model)model).createUser("yuval","fire",10);
 
-        //initUsersAndEvents();
+        initUsersAndEvents();
 
     }
 
