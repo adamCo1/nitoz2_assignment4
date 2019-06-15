@@ -400,7 +400,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
                 resultSet = stmt.executeQuery(sqlInboundMessages);
                 String resultString = resultSet.getString("name");
                 for (String cata:
-                     resultString.split(",")) {
+                        resultString.split(",")) {
                     catagories.add(cata);
                 }
 
@@ -438,7 +438,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             resultSet = stmt.executeQuery(sql);
-            System.out.println(resultSet.getString("username"));
+           // System.out.println(resultSet.getString("username"));
             while(resultSet.next()){
                 foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
             }

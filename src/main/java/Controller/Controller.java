@@ -28,8 +28,6 @@ public class Controller implements Observer {
         this.model.setController(this);
         this.model.attachObserver(view);
         ((Model)model).initModel();
-        ((Model)model).createUser("adam","fire",10);
-        ((Model)model).createUser("yuval","fire",10);
 
         initUsersAndEvents();
 
@@ -39,20 +37,26 @@ public class Controller implements Observer {
         return model.getJoinRequests(connectedUser.getUsername());
     }
 
-
+    //initialize things
     public void initUsersAndEvents(){
         User operator = new User("admin","operators",10);
         User policeOperator = new User("policeContact","police",7);
         User policeOfficer  = new User("policeOfficer","police",10);
-        String catagory = "shooting";
         ((Model)model).createUser(operator.getUsername(),operator.getForce(),operator.getRank());
         ((Model)model).createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
         ((Model)model).createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
-        Event e = new Event("b","timestmp","admin","admin","UPDATE 1","operators" ,"shooting","open");
-        Event e1 = new Event("a" , getTimeStamp() , "admin","admin","UPDATE 1" , "operators" , "shooting","open");
-        model.createCatagory(catagory);
+        Event e = new Event("testA",getTimeStamp(),"admin","admin","UPDATE 1","operators" ,"shooting","open");
+        Event e1 = new Event("testB" , getTimeStamp() , "admin","admin","UPDATE 1" , "operators" , "theft","open");
+        Event e2 = new Event("testC",getTimeStamp(),"admin","admin","UPDATE 1","operators" ,"intrusion","open");
+        Event e3 = new Event("testD" , getTimeStamp() , "admin","admin","UPDATE 1" , "operators" , "shooting","open");
+
+        String categories = "shooting,robbery,fire,intrusion,theft";
+
+        model.createCatagory(categories);
         model.createEvent(e);
         model.createEvent(e1);
+        model.createEvent(e2);
+        model.createEvent(e3);
     }
 
 
