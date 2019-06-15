@@ -40,6 +40,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
         this.createNotificationTable();
         this.createCatagoriesTable();
         this.createUpdatesTable();
+
     }
 
     /**
@@ -644,7 +645,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             PreparedStatement pstmt = conn.prepareStatement(sqlStatement);
             pstmt.executeUpdate();
             conn.close();
-            notifyObservers(login(joinRequest.getReciver()));
+            //notifyObservers(acceptJoinRequest(joinRequest.getReciver()));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -658,12 +659,12 @@ public class Model  extends Observable implements IModel , ObserveableObject {
      * @return a list of lists! in this order: user data, events, notifications
      */
     @Override
-    public List<ObservableList> login(String username) {
+    public List<ObservableList> getJoinRequests(String username) {
         User u = getUser(username);
-        ObservableList<User> user = FXCollections.observableArrayList();
-        user.add(u);
+       // ObservableList<User> user = FXCollections.observableArrayList();
+        //user.add(u);
         List<ObservableList> ans = new ArrayList<>();
-        ans.add(user);
+        //ans.add(user);
         ans.add(this.getEventsByForce(u.getForce()));
         ans.add(this.getNotifications(username));
 

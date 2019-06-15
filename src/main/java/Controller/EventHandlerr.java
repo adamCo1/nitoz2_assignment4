@@ -42,12 +42,13 @@ public class EventHandlerr {
 
         category = (String) categoryBox.getSelectionModel().getSelectedItem() ;
 
-        if(title.equals("") || update.equals("") || category.equals("") || category == null) {
+        if(title.equals("") || update.equals("") ||  category == null || category.equals("") ) {
             ErrorBox box = new ErrorBox();
             box.showErrorStage("Invalid input");
+            return;
         }
 
-        Event event = new Event(title ,controller.getTimeStamp() ,"a" ,"a" ,"a" ,update ,category );
+        Event event = new Event(title ,controller.getTimeStamp() ,controller.getConnectedUser().getUsername() ,"none" ,update ,"none" ,category );
 
         controller.addEventToDB(event);
         cancel_btn();

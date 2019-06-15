@@ -19,7 +19,7 @@ public class Controller implements Observer {
 
     private IModel model ;
     private IView view ;
-    private User connectedUser , userA , userB ;
+    private User connectedUser ;
 
     public Controller(){
         this.model = new Model() ;
@@ -27,11 +27,31 @@ public class Controller implements Observer {
         this.view.setController(this);
         this.model.setController(this);
         this.model.attachObserver(view);
-        ((Model)model).createUser("fireman_a","fire",7);
-        ((Model)model).createUser("operator_a","operator",10);
-        this.userA = new User("fireman_a","fire",7);
-        this.userB = new User("operator_a","operator",10);
-        this.connectedUser = userB ;
+        ((Model)model).createUser("adam","fire",10);
+        ((Model)model).createUser("yuval","fire",10);
+
+       // initUsersAndEvents();
+
+    }
+
+    public List getJoinRequests(){
+        return model.getJoinRequests(connectedUser.getUsername());
+    }
+
+
+    public void initUsersAndEvents(){
+        User operator = new User("admin","operators",10);
+        User policeOperator = new User("policeContact","police",7);
+        User policeOfficer  = new User("policeOfficer","police",10);
+        String catagory = "shooting";
+        ((Model)model).createUser(operator.getUsername(),operator.getForce(),operator.getRank());
+        ((Model)model).createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
+        ((Model)model).createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
+        Event e = new Event("shootingAtHarlem","timestmp","admin","none","UPDATE 1","none" ,"shooting");
+        Event e1 = new Event("ShootingAtDaled" , getTimeStamp() , "admin","none","UPDATE 1" , "none" , "shooting");
+        model.createCatagory(catagory);
+        model.createEvent(e);
+        model.createEvent(e1);
     }
 
 
@@ -46,7 +66,11 @@ public class Controller implements Observer {
     }
 
     public boolean checkWritePermission(Event eventToUpdate){
-        return true;
+
+        if(connectedUser == null)
+            return false ;
+
+        return model.checkWritePremission(connectedUser,eventToUpdate);
     }
 
     public ObservableList<User> getUsersByForce(String type){
@@ -57,6 +81,11 @@ public class Controller implements Observer {
      *
      */
     public void createNewEvent(){
+        if(connectedUser == null){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("Log in first");
+            return;
+        }
         List<String> allCategories = model.getCatagories() ;
         view.getEventDetailsFromUser(FXCollections.observableArrayList(allCategories)) ;
     }
@@ -69,6 +98,13 @@ public class Controller implements Observer {
      * join force UC
      */
     public void joinForceToEvent(){
+
+        if(connectedUser == null){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("login first");
+            return;
+        }
+
         view.getUserJoinRequest();
 
     }
@@ -104,11 +140,7 @@ public class Controller implements Observer {
 
     public void loginFromDB(String username){
         connectedUser = model.getUser(username) ;
-        try{
-            System.out.println(connectedUser.getUsername());
-        }catch (Exception e){
 
-        }
     }
 
     public void userEvents() {
