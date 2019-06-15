@@ -483,8 +483,6 @@ public class Model  extends Observable implements IModel , ObserveableObject {
     public ObservableList<JoinRequest> getNotifications(String username) {
 
 
-
-
         ResultSet resultSet;
         ObservableList<JoinRequest> notifications = FXCollections.observableArrayList();
         String sql = "SELECT * FROM notifications WHERE reciver = "+ "'" + username + "'";
@@ -569,6 +567,9 @@ public class Model  extends Observable implements IModel , ObserveableObject {
         ArrayList<EventUpdate> updates = new ArrayList<EventUpdate>();
         //String sqlEvents = "SELECT * FROM events WHERE "+"'" + field+ "'"+" = " + "'" + value+ "'";
         String sqlEvents = "SELECT * FROM events WHERE "+field+" = " + "'" + value+ "'";
+        if(field.equals("all")){
+            sqlEvents = "SELECT * FROM events";
+        }
         User foundUser = null;
         try {
             String url = "jdbc:sqlite:emer_agency.db";
@@ -608,6 +609,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
     }
 
+
     @Override
     public ObservableList<Event> getEventsByCatagory(String name) {
         return this.getEvent("catagory",name);
@@ -620,7 +622,13 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
     @Override
     public ObservableList<Event> getEventsByForce(String name) {
+        User u = getUser(name);
+        if(u.getForce().equals("operators"))
+            return this.getEvent("all","");
+
         return this.getEvent("handling_force",name);
+
+
     }
 
 

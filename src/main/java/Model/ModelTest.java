@@ -8,7 +8,7 @@ public class ModelTest {
 
         Model model = new Model();
 
-        checkEvents(model);
+        //checkEvents(model);
         // model.initModel();
        // insertCategories(model);
         //tableRecreation(model);
@@ -16,7 +16,24 @@ public class ModelTest {
         /****** TESTED OK **************/
         //test create user
             //create user
-            //User u = new User("admin","system",10);
+        /**************************************************************/
+
+//            model.createUpdatesTable();
+//            model.createCatagoriesTable();
+//            model.createNotificationTable();
+//            model.createEventTable();
+//            model.createUsersTable();
+//            User operator = new User("admin","operators",10);
+//            User policeOperator = new User("policeContact","police",7);
+//            User policeOfficer  = new User("policeOfficer","police",10);
+//            String catagory = "shooting";
+//            model.createUser(operator.getUsername(),operator.getForce(),operator.getRank());
+//            model.createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
+//            model.createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
+//            Event e = new Event("shootingAtHarlem","timestmp","admin","none","open","none" ,"shooting");
+//            model.createCatagory(catagory);
+//            model.createEvent(e);
+            /********************************************************/
             //send to Model function
             // model.createUser("admin","system",10);
             // User u = model.getUser("admin");

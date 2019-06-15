@@ -76,6 +76,8 @@ public class Event {
     }
 
     public String getUpdatesStrings(){
+        if(this.updateList.size() == 0 )
+            return "";
         String ans = "";
 
         for (EventUpdate update:

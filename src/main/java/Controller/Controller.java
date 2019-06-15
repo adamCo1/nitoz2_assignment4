@@ -123,4 +123,6 @@ public class Controller implements Observer {
     public User getConnectedUser(){
         return this.connectedUser ;
     }
+
+
 }
