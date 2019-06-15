@@ -27,10 +27,11 @@ public class Controller implements Observer {
         this.view.setController(this);
         this.model.setController(this);
         this.model.attachObserver(view);
-        ((Model)model).createUser("adam","fire",10);
-        ((Model)model).createUser("yuval","fire",10);
+        ((Model)model).initModel();
+        //((Model)model).createUser("adam","fire",10);
+        //((Model)model).createUser("yuval","fire",10);
 
-       // initUsersAndEvents();
+        //initUsersAndEvents();
 
     }
 
@@ -47,13 +48,17 @@ public class Controller implements Observer {
         ((Model)model).createUser(operator.getUsername(),operator.getForce(),operator.getRank());
         ((Model)model).createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
         ((Model)model).createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
-        Event e = new Event("shootingAtHarlem","timestmp","admin","none","UPDATE 1","none" ,"shooting","open");
-        Event e1 = new Event("ShootingAtDaled" , getTimeStamp() , "admin","none","UPDATE 1" , "none" , "shooting","open");
+        Event e = new Event("b","timestmp","admin","admin","UPDATE 1","operators" ,"shooting","open");
+        Event e1 = new Event("a" , getTimeStamp() , "admin","admin","UPDATE 1" , "operators" , "shooting","open");
         model.createCatagory(catagory);
         model.createEvent(e);
         model.createEvent(e1);
     }
 
+
+    public void acceptJoinRequest(JoinRequest request){
+        model.acceptJoinRequest(request);
+    }
 
     public String getTimeStamp(){
         Timestamp time = model.getTimeStamp();

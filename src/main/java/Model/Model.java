@@ -436,6 +436,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             resultSet = stmt.executeQuery(sql);
+            System.out.println(resultSet.getString("username"));
             while(resultSet.next()){
                 foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
             }
@@ -465,7 +466,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             resultSet = stmt.executeQuery(sql);
-            System.out.println(resultSet.getString("username"));
+            //System.out.println(resultSet.getString("username"));
             while(resultSet.next()){
                 foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
                 users.add(foundUser);
@@ -525,11 +526,12 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             resultSet = stmt.executeQuery(sqlInboundMessages);
-            conn.close();
             while(resultSet.next()){
                foundUser = new User(resultSet.getString("username"),resultSet.getString("organization"),resultSet.getDouble("rank"));
 
             }
+            conn.close();
+
 
 
         } catch (SQLException var7) {
@@ -623,7 +625,6 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
     @Override
     public ObservableList<Event> getEventsByForce(String name) {
-
         if(name.equals("operators"))
             return this.getEvent("all","");
 

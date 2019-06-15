@@ -86,7 +86,7 @@ public class NotificationHandler {
 
         receiver = currentUserSelected.getUsername();
         sender = controller.getConnectedUser().getUsername();
-        controller.sendJoinRequest(new JoinRequest(sender,receiver,title, controller.getTimeStamp(),"open","content"));
+        controller.sendJoinRequest(new JoinRequest(sender,receiver,title, controller.getTimeStamp(),"open","COME QUICK"));
 
         cancel_btn();
     }

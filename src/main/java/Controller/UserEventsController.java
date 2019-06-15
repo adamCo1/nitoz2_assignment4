@@ -1,6 +1,7 @@
 package Controller;
 
 import Event.*;
+import Objects.ErrorBox;
 import Objects.StageHolder;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
@@ -27,7 +28,7 @@ public class UserEventsController {
     private TableColumn<JoinRequest,String> requestKey , requestValue ;
 
 
-    public void initializeTable(ObservableList<Event> eventList){
+    public void initializeTable(){
 
         requestsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -45,7 +46,7 @@ public class UserEventsController {
         requestsTable.setItems(eventsAndRequests.get(1));
 
         key.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEventTitle()));
-        value.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toString()));
+        value.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUpdatesStrings()));
         eventTable.setItems(eventsAndRequests.get(0));
     }
 
@@ -56,7 +57,14 @@ public class UserEventsController {
 
 
     public void acceptRequest(){
+        if(currentRequestSelected == null){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("You must choose a request first");
+            return ;
+        }
 
+        controller.acceptJoinRequest(currentRequestSelected);
+        initializeTable();
     }
 
     public void setController(Controller controller){

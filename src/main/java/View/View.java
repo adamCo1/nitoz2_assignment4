@@ -150,7 +150,7 @@ public class View extends Observable implements IView , Observer {
             stage.setResizable(false);
             UserEventsController ctrl = loader.getController() ;
             ctrl.setController(controller);
-            ctrl.initializeTable(eventList);
+            ctrl.initializeTable();
             StageHolder.getInstance().holdStage(stage);
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
