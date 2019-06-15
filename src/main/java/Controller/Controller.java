@@ -47,8 +47,8 @@ public class Controller implements Observer {
         ((Model)model).createUser(operator.getUsername(),operator.getForce(),operator.getRank());
         ((Model)model).createUser(policeOfficer.getUsername(),policeOfficer.getForce(),policeOfficer.getRank());
         ((Model)model).createUser(policeOperator.getUsername(),policeOperator.getForce(),policeOperator.getRank());
-        Event e = new Event("shootingAtHarlem","timestmp","admin","none","UPDATE 1","none" ,"shooting");
-        Event e1 = new Event("ShootingAtDaled" , getTimeStamp() , "admin","none","UPDATE 1" , "none" , "shooting");
+        Event e = new Event("shootingAtHarlem","timestmp","admin","none","UPDATE 1","none" ,"shooting","open");
+        Event e1 = new Event("ShootingAtDaled" , getTimeStamp() , "admin","none","UPDATE 1" , "none" , "shooting","open");
         model.createCatagory(catagory);
         model.createEvent(e);
         model.createEvent(e1);
@@ -155,4 +155,6 @@ public class Controller implements Observer {
     public User getConnectedUser(){
         return this.connectedUser ;
     }
+
+
 }

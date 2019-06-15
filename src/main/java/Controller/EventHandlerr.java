@@ -48,7 +48,7 @@ public class EventHandlerr {
             return;
         }
 
-        Event event = new Event(title ,controller.getTimeStamp() ,controller.getConnectedUser().getUsername() ,"none" ,update ,"none" ,category );
+        Event event = new Event(title ,controller.getTimeStamp() ,controller.getConnectedUser().getUsername() ,"none" ,update ,"none" ,category ,"open");
 
         controller.addEventToDB(event);
         cancel_btn();

@@ -14,7 +14,7 @@ public class Event {
     private String handlingForce;
     private String catagory;
 
-    public Event(String title, String creationTime, String operator, String incharge, String update, String handlingForce, String catagory){
+    public Event(String title, String creationTime, String operator, String incharge, String update, String handlingForce, String catagory,String status){
         this.eventTitle = title ;
         this.operator = operator;
         this.incharge = incharge;
@@ -77,6 +77,8 @@ public class Event {
     }
 
     public String getUpdatesStrings(){
+        if(this.updateList.size() == 0 )
+            return "";
         String ans = "";
         int times = 0 ;
 

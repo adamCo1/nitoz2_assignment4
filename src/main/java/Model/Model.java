@@ -341,7 +341,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
     @Override
     public void sendJoinRequest(JoinRequest joinRequest) {
-        String sql = "INSERT INTO notifications(reciver, sender, status, content, creation_time) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO notifications(sender, reciver, event, status, content, creation_time) VALUES(?,?,?,?,?,?)";
 
         try {
             String url = "jdbc:sqlite:emer_agency.db";
@@ -349,11 +349,12 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
             conn = DriverManager.getConnection(url);
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, joinRequest.getReciver());
-            pstmt.setString(2, joinRequest.getSender());
-            pstmt.setString(3, joinRequest.getStatus());
-            pstmt.setString(4, joinRequest.getContent());
-            pstmt.setString(5, joinRequest.getTimeSent());
+            pstmt.setString(1, joinRequest.getSender());
+            pstmt.setString(2, joinRequest.getReciver());
+            pstmt.setString(3, joinRequest.getEvent());
+            pstmt.setString(4, joinRequest.getStatus());
+            pstmt.setString(5, joinRequest.getContent());
+            pstmt.setString(6, joinRequest.getTimeSent());
 
 
 
@@ -484,8 +485,6 @@ public class Model  extends Observable implements IModel , ObserveableObject {
     public ObservableList<JoinRequest> getNotifications(String username) {
 
 
-
-
         ResultSet resultSet;
         ObservableList<JoinRequest> notifications = FXCollections.observableArrayList();
         String sql = "SELECT * FROM notifications WHERE reciver = "+ "'" + username + "'";
@@ -570,6 +569,9 @@ public class Model  extends Observable implements IModel , ObserveableObject {
         ArrayList<EventUpdate> updates = new ArrayList<EventUpdate>();
         //String sqlEvents = "SELECT * FROM events WHERE "+"'" + field+ "'"+" = " + "'" + value+ "'";
         String sqlEvents = "SELECT * FROM events WHERE "+field+" = " + "'" + value+ "'";
+        if(field.equals("all")){
+            sqlEvents = "SELECT * FROM events";
+        }
         User foundUser = null;
         try {
             String url = "jdbc:sqlite:emer_agency.db";
@@ -579,7 +581,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
             while(resultSet.next()){
                 events.add(new Event(resultSet.getString("title"),resultSet.getString("creation_time"),
                         resultSet.getString("operator"),resultSet.getString("incharge"),
-                        resultSet.getString("status"),resultSet.getString("handling_force"),resultSet.getString("catagory")));
+                        resultSet.getString("status"),resultSet.getString("handling_force"),resultSet.getString("catagory"),"open"));
             }
             conn.close();
 
@@ -609,6 +611,7 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
     }
 
+
     @Override
     public ObservableList<Event> getEventsByCatagory(String name) {
         return this.getEvent("catagory",name);
@@ -621,7 +624,13 @@ public class Model  extends Observable implements IModel , ObserveableObject {
 
     @Override
     public ObservableList<Event> getEventsByForce(String name) {
+        User u = getUser(name);
+        if(u.getForce().equals("operators"))
+            return this.getEvent("all","");
+
         return this.getEvent("handling_force",name);
+
+
     }
 
 
