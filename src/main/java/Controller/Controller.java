@@ -139,8 +139,8 @@ public class Controller implements Observer {
     }
 
     public void loginFromDB(String username){
-        connectedUser = model.getUser(username) ;
-
+        User user = model.getUser(username);
+        connectedUser = user ;
     }
 
     public void userEvents() {
