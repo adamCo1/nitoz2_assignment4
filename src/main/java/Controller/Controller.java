@@ -100,6 +100,12 @@ public class Controller implements Observer {
     }
 
     public void updateEvent(){
+        if(connectedUser == null){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("Log in first");
+            return;
+        }
+
         view.getEventUpdateFromUser();
     }
 

@@ -6,11 +6,13 @@ import Objects.StageHolder;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.List;
 public class UpdateEventController  {
 
     private Controller controller ;
+    private Event eventToUpdate ;
 
     @FXML
     private TextField categoryField , eventField ;
@@ -30,6 +33,15 @@ public class UpdateEventController  {
     private TableColumn<Event, String> key , value ;
 
     public UpdateEventController(){
+    }
+
+    public void initListeners(){
+        table.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                eventToUpdate =(Event) table.getSelectionModel().getSelectedItem();
+            }
+        });
     }
 
     public void cancel_btn(){
@@ -49,6 +61,12 @@ public class UpdateEventController  {
 
     public void submit_btn(){
 
+        if(eventToUpdate == null){
+            ErrorBox box = new ErrorBox();
+            box.showErrorStage("Must select an event to update");
+            return;
+        }
+
         String category = categoryField.getText() ;
         String update = updateField.getText() ;
         String eventTitle = eventField.getText() ;
@@ -59,8 +77,7 @@ public class UpdateEventController  {
             return;
         }
 
-        List<Event> eventList = controller.getEvent("title",eventTitle);
-        Event eventToUpdate = eventList.get(0);
+        //List<Event> eventList = controller.getEvent("title",eventTitle);
 
         //check for user permissions
         if(!controller.checkWritePermission(eventToUpdate)){
