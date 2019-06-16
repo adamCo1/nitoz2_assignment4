@@ -24,7 +24,7 @@ public class UpdateEventController  {
     private Event eventToUpdate ;
 
     @FXML
-    private TextField categoryField , eventField ;
+    private TextField  eventField ;
     @FXML
     private TextArea updateField ;
     @FXML
@@ -67,11 +67,10 @@ public class UpdateEventController  {
             return;
         }
 
-        String category = categoryField.getText() ;
         String update = updateField.getText() ;
         String eventTitle = eventField.getText() ;
 
-        if(category.equals("") || update.equals("") || eventTitle.equals("")){
+        if(update.equals("") || eventTitle.equals("")){
             ErrorBox box = new ErrorBox();
             box.showErrorStage("Must fill update and title fields");
             return;
